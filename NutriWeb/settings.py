@@ -25,7 +25,7 @@ MEDIA_DIR = os.path.join(BASE_DIR,'media')
 SECRET_KEY = '7mmbyw@6$6dt-boep=wvoov6pyldyrf*bercpiq*cd2k1$(^0b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['nutritionplatform.herokuapp.com','127.0.0.1']
 
