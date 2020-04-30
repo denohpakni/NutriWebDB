@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}My Dashboard{% endblock title %}
+{% block body %} 
+
+<br><br><br><br><br><br>
+            <section class="section-bg">
+                            <div class="container">
+                                <h3>We need more details abou you</h3>
+                                <form method="POST">
+                                        {% csrf_token %}
+                                        {% include 'bs4_form.html' with form=form %}
+                                    <input type="submit" name="" value="Update info">
+                              </form>
+                            </div>                
+            </section>
+
+{% endblock %}

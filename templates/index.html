@@ -5,13 +5,44 @@
 {% block body %}
 
 
+  <!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro" class="clearfix">
+    <div class="container d-flex h-100">
+      <div class="row justify-content-center align-self-center">
+        <div class="col-md-6 intro-info order-md-first order-last">
+          <h2>Rapid Nutrition Testing<br>for <span>You!</span></h2>
+          <div>
+            <a href="/#services" class="btn-get-started scrollto">Get Started</a>
+          </div>
+        </div>
+  
+        <div class="col-md-6 intro-img order-md-last order-first">
+          <img src="{% static "img/agriculture-barley.jpg" %}" alt="" class="img-fluid">
+        </div>
+      </div>
+
+    </div>
+  </section><!-- #intro -->
 
   <main id="main">
 
+    <!-- User Area -->
+    <section>
+      <div class="site-section">
+        <div class="container">
+            {% if user.is_authenticated %}
+            <h2>Hello {{ user.username }}</h2>
+            {% else %}
+              <button type="button" class="btn btn-light btn-lg btn-block btn-primary"><a href="{% url 'Webapp:user_login' %}">Register or Login to view your Profile & Place an Order</a></button>
+            {% endif %}
+        </div>
+      </div>
+    </section>
+    <!-- User Area -->
 
-
-
-    <!--==========================
+ <!--==========================
       About Us Section
     ============================-->
     <section id="about">
@@ -38,76 +69,72 @@
 
     </section><!-- #about -->
 
+    <!--==========================
+      Request For a Service
+    ============================-->
+    <section id="faq">
+      <div class="container">
+        <header class="section-header">
+          <h3>Request For a Service</h3>
+          <p>Click on a category below to expand and view more</p>
+        </header>
 
+        <ul id="faq-list" class="wow fadeInUp">
+          <li>
+            <a data-toggle="collapse" class="collapsed" href="#faq1">Food safety <i class="ion-android-remove"></i></a>
+            <div id="faq1" class="collapse" data-parent="#faq-list">
+            <ul>
+              <li> Analysis of aflatoxins (B1, B2, G1, G2) in food and feedstuff, aflatoxin M1 in ilk through ultra-perfomance liuid chromatography fluorescence detection</li>
+              <li>Analysis of multi mycotoxin using UPLC-MS/MS.</li>
+              <li> Cross validation of rapid aflatoxin detection kits with UPLC-FLD across different matrices</li>
+              <li>Multi-residue pesticide analysis</li>
+              </ul>
+            </div>
+          </li>
 
-        <!--==========================
-          Frequently Asked Questions Section
-        ============================-->
-        <section id="faq">
-          <div class="container">
-            <header class="section-header">
-              <h3>Request For a Service</h3>
-              <p>Click on a category below to expand and view more</p>
-            </header>
+          <li>
+            <a data-toggle="collapse" href="#faq2" class="collapsed">Food nutrition <i class="ion-android-remove"></i></a>
+            <div id="faq2" class="collapse" data-parent="#faq-list">
+              <ul>
+                <li> Analysis of inorganic elemens (Fe, Zn, Mg, Co, Ca,K, Na, P Mn) in various plant matrices</li>
+                <li>Profiling of isoflavones in soy based food and supplements through UPLC-PDA</li>
+                <li> Assesment of essential amino acids in food and feedstuff</li>
+                <li>Profiling of fatty acid methyl esters by gas chromatography mass spectometry (GC-MS)</li>
+                <li>Profiling of volatile organic compounds using head space solid phase micro extraction gas chromatography mass spectometry (HS-SPME-GCMS)</li>
+                <li>Determination of nutritional and antinutritional phytochemicals in food and feed
+                  e.g phenolics, flavanoids, anti-oxidant activity, tannins, oxalates,phytates etc..</li>not fat (SnF), freezing point depression
+                  (FPD), total acidity, density, free fatty acids (FFA), citric acids, casein, urea, sucrose, glucose, fructose, galactose</li>
 
-            <ul id="faq-list" class="wow fadeInUp">
-              <li>
-                <a data-toggle="collapse" class="collapsed" href="#faq1">Food safety <i class="ion-android-remove"></i></a>
-                <div id="faq1" class="collapse" data-parent="#faq-list">
-                <ul>
-                  <li> Analysis of aflatoxins (B1, B2, G1, G2) in food and feedstuff, aflatoxin M1 in ilk through ultra-perfomance liuid chromatography fluorescence detection</li>
-                  <li>Analysis of multi mycotoxin using UPLC-MS/MS.</li>
-                  <li> Cross validation of rapid aflatoxin detection kits with UPLC-FLD across different matrices</li>
-                  <li>Multi-residue pesticide analysis</li>
-                  </ul>
-                </div>
-              </li>
+                  <li>Determination of proximates composition in raw and processed food and feed products</li>
+                  <li>Determination of various proximate in raw and processed milk (fat, protein, lactose, total solids, solids )</li>
+                </ul>
+            </div>
+          </li>
 
-              <li>
-                <a data-toggle="collapse" href="#faq2" class="collapsed">Food nutrition <i class="ion-android-remove"></i></a>
-                <div id="faq2" class="collapse" data-parent="#faq-list">
-                  <ul>
-                    <li> Analysis of inorganic elemens (Fe, Zn, Mg, Co, Ca,K, Na, P Mn) in various plant matrices</li>
-                    <li>Profiling of isoflavones in soy based food and supplements through UPLC-PDA</li>
-                    <li> Assesment of essential amino acids in food and feedstuff</li>
-                    <li>Profiling of fatty acid methyl esters by gas chromatography mass spectometry (GC-MS)</li>
-                    <li>Profiling of volatile organic compounds using head space solid phase micro extraction gas chromatography mass spectometry (HS-SPME-GCMS)</li>
-                    <li>Determination of nutritional and antinutritional phytochemicals in food and feed
-                      e.g phenolics, flavanoids, anti-oxidant activity, tannins, oxalates,phytates etc..</li>not fat (SnF), freezing point depression
-                      (FPD), total acidity, density, free fatty acids (FFA), citric acids, casein, urea, sucrose, glucose, fructose, galactose</li>
+          <li>
+            <a data-toggle="collapse" href="#faq3" class="collapsed">Others <i class="ion-android-remove"></i></a>
+            <div id="faq3" class="collapse" data-parent="#faq-list">
+              <ul>
+                <li> Untargeted GC-MS and UPLC-MS metabolite prfiling</li>
+                <li>Targeted UPLC-MS/MS profiling of strigolactones</li>
 
-                      <li>Determination of proximates composition in raw and processed food and feed products</li>
-                      <li>Determination of various proximate in raw and processed milk (fat, protein, lactose, total solids, solids )</li>
-                    </ul>
-                </div>
-              </li>
+                </ul>
+            </div>
+          </li>
 
-              <li>
-                <a data-toggle="collapse" href="#faq3" class="collapsed">Others <i class="ion-android-remove"></i></a>
-                <div id="faq3" class="collapse" data-parent="#faq-list">
-                  <ul>
-                    <li> Untargeted GC-MS and UPLC-MS metabolite prfiling</li>
-                    <li>Targeted UPLC-MS/MS profiling of strigolactones</li>
+          <li>
+            <a data-toggle="collapse" href="#faq4" class="collapsed">Training <i class="ion-android-remove"></i></a>
+            <div id="faq4" class="collapse" data-parent="#faq-list">
+              <ul>
+                <li>Training on demand</li>
+              </ul>
+            </div>
+          </li>
 
-                    </ul>
-                </div>
-              </li>
+        </ul>
 
-              <li>
-                <a data-toggle="collapse" href="#faq4" class="collapsed">Training <i class="ion-android-remove"></i></a>
-                <div id="faq4" class="collapse" data-parent="#faq-list">
-                  <ul>
-                    <li>Training on demand</li>
-                  </ul>
-                </div>
-              </li>
-
-            </ul>
-
-          </div>
-        </section><!-- #faq -->
-
-
+      </div>
+    </section><!-- #faq -->
 
     <!--==========================
       Why Us Section
@@ -169,6 +196,7 @@
         </div>
 
       </div>
+
 <!-- The moving number thingy -->
       <div class="container">
         <div class="row counters">
@@ -198,70 +226,112 @@
       </div>
     </section>
 
-
-
-
     <!--==========================
-      Clients Section
+      Call To Action Section
     ============================-->
-    <section id="testimonials">
+    <section id="call-to-action" class="wow fadeInUp">
       <div class="container">
-
-        <header class="section-header">
-          <h3>Testimonials</h3>
-        </header>
-
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
-
-            <div class="owl-carousel testimonials-carousel wow fadeInUp">
-
-              <div class="testimonial-item">
-                <img src="{% static "img/testimonial-1.jpg" %}" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-                <p>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                </p>
-              </div>
-
-              <div class="testimonial-item">
-                <img src="{% static "img/testimonial-2.jpg" %}" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-                <p>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                </p>
-              </div>
-
-              <div class="testimonial-item">
-                <img src="{% static "img/testimonial-3.jpg" %}" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-                <p>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                </p>
-              </div>
-
-              <div class="testimonial-item">
-                <img src="{% static "img/testimonial-4.jpg" %}" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-                <p>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                </p>
-              </div>
-
-            </div>
-
+        <div class="row">
+          <div class="col-lg-9 text-center text-lg-left">
+            <h3 class="cta-title">Getting the Science right</h3>
+            <p class="cta-text">We have additional facilities that can be accessed through the platform like a A dedicated (BSL2) milling room, Plant growth facilities and more.</p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="/order/">Make an Order</a>
           </div>
         </div>
 
+      </div>
+    </section><!-- #call-to-action -->
+
+    <!--==========================
+      Team Section
+    ============================-->
+    <section id="team" class="section-bg">
+      <div class="container">
+        <div class="section-header">
+          <h3>Team</h3>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="member">
+              <img src="{% static "img/teamember.png" %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Walter White</h4>
+                  <span>Chief Executive Officer</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="member">
+              <img src="{% static "img/girl.png" %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Sarah Jhonson</h4>
+                  <span>Product Manager</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+            <div class="member">
+              <img src="{% static "img/teamember.png" %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>William Anderson</h4>
+                  <span>CTO</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="member">
+              <img src="{% static "img/girl.png" %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Amanda Jepson</h4>
+                  <span>Accountant</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
 
       </div>
-    </section><!-- #testimonials -->
-
-
+    </section><!-- #team -->
 
     <!--==========================
       Clients Section
@@ -275,6 +345,7 @@
 
         <div class="owl-carousel clients-carousel">
           <img src="{% static "img/clients/africarice.jpg" %}" alt="">
+          <img src="{% static "img/clients/beca.png" %}" alt="">
           <img src="{% static "img/clients/cgiar.png" %}" alt="">
           <img src="{% static "img/clients/cimmyt.png" %}" alt="">
           <img src="{% static "img/clients/CIP.jpg" %}" alt="">
@@ -287,7 +358,6 @@
 
       </div>
     </section><!-- #clients -->
-
 
     <!--==========================
       Frequently Asked Questions Section
@@ -360,7 +430,7 @@
     </section><!-- #faq -->
 
   </main>
-
+  
   <!--==========================
     Footer
   ============================-->
@@ -377,16 +447,15 @@
                 <div class="col-sm-6">
 
                   <div class="footer-info">
-                    <h3>Rapid</h3>
-                    <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+                    <h3>The Nutrition Platform</h3>
+                    <p>Analytical testing Services and support in food safety, food nutrition and related
+                      agricultural applications.</p>
                   </div>
 
                   <div class="footer-newsletter">
-                    <h4>Our Newsletter</h4>
-                    <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem.</p>
-                    <form action="" method="post">
-                      <input type="email" name="email"><input type="submit"  value="Subscribe">
-                    </form>
+                    <h4>About ILRI</h4>
+                    <p>Learn more about the BecA-ILRI Hub.</p>
+                    <a href="https://www.ilri.org/" target="_blank"><img src="{% static "img/clients/ILRI.jpg" %}"></a>
                   </div>
 
                 </div>
@@ -395,8 +464,8 @@
                   <div class="footer-links">
                     <h4>Useful Links</h4>
                     <ul>
-                      <li><a href="#">Home</a></li>
-                      <li><a href="#">About us</a></li>
+                      <li><a href="#">ILRI</a></li>
+                      <li><a href="#">BecA Hub</a></li>
                       <li><a href="#">Services</a></li>
                       <li><a href="#">Terms of service</a></li>
                       <li><a href="#">Privacy policy</a></li>
@@ -406,11 +475,11 @@
                   <div class="footer-links">
                     <h4>Contact Us</h4>
                     <p>
-                      A108 Adam Street <br>
-                      New York, NY 535022<br>
-                      United States <br>
-                      <strong>Phone:</strong> +1 5589 55488 55<br>
-                      <strong>Email:</strong> info@example.com<br>
+                      P.O Box 30709<br>
+                      Nairobi 00100<br>
+                      Kenya <br>
+                      <strong>Phone:</strong> +254 20 422 3384<br>
+                      <strong>Email:</strong> beca-hub@cgiar.org<br>
                     </p>
                   </div>
 
@@ -430,13 +499,13 @@
           <div class="col-lg-6">
 
             <div class="form">
-
+              
               <h4>Send us a message</h4>
-              <p>Eos ipsa est voluptates. Nostrum nam libero ipsa vero. Debitis quasi sit eaque numquam similique commodi harum aut temporibus.</p>
+              <p>Want to know more about what we do, or our services.</p>
               <form action="" method="POST" role="form" class="contactForm">
 
                 {% csrf_token %}
-                {{ form.as_p }}
+                {% include 'bs4_form.html' with form=form %}
 
                 <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
               </form>
@@ -444,7 +513,7 @@
 
           </div>
 
-
+          
 
         </div>
 
@@ -453,7 +522,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong>Rapid</strong>. All Rights Reserved
+        &copy; Copyright <strong>BecA-ILRI</strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!--
@@ -462,7 +531,7 @@
           Licensing information: https://bootstrapmade.com/license/
           Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Rapid
         -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed using <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
   </footer><!-- #footer -->

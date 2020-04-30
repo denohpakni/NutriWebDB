@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 # The contact form from the client
@@ -36,13 +37,23 @@ Analysis_Types = [
 ]
 
 class Order(models.Model):
-    Order_Number = models.CharField(primary_key=True,max_length=10,unique=True, default='order number',blank=True)
+    Order_Number = models.CharField(primary_key=True,max_length=50,default='OrderNo',unique=True,blank=True)
     Date_recieved = models.DateTimeField(auto_now_add=True)
     Client = models.CharField(max_length=256, default='Client name')
-    Client_Address = models.TextField()
+    No_of_Samples = models.IntegerField(default=1)
     Sample_Type = models.CharField(max_length=99, null=True)
     Sample_Reciever = models.CharField(max_length=128,blank=True)
     Analyis_Required = models.CharField(choices=Analysis_Types,default='Unknown',max_length=256)
     Remarks = models.TextField()
     Stage = models.IntegerField(choices=STATUS, default=0)
  
+
+# The User information like address, email, 
+class UserProfileInfo(models.Model):
+    name = models.CharField(default=User,max_length=256)
+    contact_number = models.PositiveIntegerField()
+    Organisation_name = models.TextField(blank=True)
+    Address = models.CharField(max_length=128,blank=True)
+    Town_or_City = models.CharField(max_length=128,blank=True)
+    Postcode_or_zip_code = models.CharField(max_length=128,blank=True)
+    Country = models.CharField(max_length=128)

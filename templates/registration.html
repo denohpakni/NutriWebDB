@@ -1,0 +1,36 @@
+<!doctype html>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}Register{% endblock %}
+{% block body %}
+
+<br><br><br><br><br>
+<section class="section-bg">
+  <div class="row justify-content-center align-self-center">
+    <div class="col-md-6 intro-info order-md-first order-last">
+              <br><br><br><br><br><br>    
+              <div class="container">
+        {% if registered %}
+          <h1>Thank you for registering!</h1>
+        {% else %}
+          <h1>Register Here</h1>
+          <h3>Just fill out the form.</h3>
+          <form class="lead" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            {% include 'bs4_form.html' with form=user_form %}
+            <input type="submit" name="" value="Register">
+          </form>
+</div>
+</div>
+</div>
+</section>
+        
+        {% endif %}
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,25 @@
+<!doctype html>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Login{% endblock %}
+{% block body %}
+
+<!-- ############################ -->
+<br><br><br><br><br><br>
+            <section class="section-bg">
+                            <div class="container">
+                                <h1>Please Login here :</h1>
+                                <form class="lead login100-form validate-form" method="post" action="{% url 'Webapp:user_login' %}">
+                                        {% csrf_token %}
+                                        {% include 'bs4_form.html' with form=form %}
+                                        {# A more "HTML" way of creating the login form#}
+                                        <label for="username">Username:</label>
+                                        <input type="text" name="username" placeholder="Username">
+                                        <label for="password">Password:</label>
+                                        <input type="password" name="password" placeholder="Password">
+                                        <input type="submit" name="" value="Login">
+                              </form>
+                            </div>                
+            </section>
+
+  {% endblock %}

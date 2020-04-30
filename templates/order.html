@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
+{% block title %}Place an Order{% endblock %}
 {% load static %}
 
 {% block body %}
 <section class="section-bg">
     <div class="container d-flex h-100">
         <div class="row justify-content-center align-self-center">
-          <div class="col-md-6 intro-info order-md-first order-last">
+          <div>
   <br><br><br><br><br><br>
             <div>
                 <h4>Make an Order</h4>
                 <p>Asuming you've already discussed with the guys at the Nutrition Platform.</p>
-                <form action="" method="POST" role="form" class="contactForm">
+                <form action="" method="POST">
                 {% csrf_token %}
-                {{ orderform.as_p }}
+                {% include 'bs4_form.html' with form=form %}
                 <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
                 </form>
             </div>

@@ -14,8 +14,9 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATE_DIR = os.path.join(BASE_DIR, 'NutriWeb/templates')
-STATIC_DIR = os.path.join(BASE_DIR,'NutriWeb/static')
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+STATIC_DIR = os.path.join(BASE_DIR,'static')
+MEDIA_DIR = os.path.join(BASE_DIR,'media')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -32,8 +33,10 @@ ALLOWED_HOSTS = ['nutritionplatform.herokuapp.com','127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
     'admin_interface',
     'colorfield',
+    'clearcache',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Webapp',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +138,10 @@ EMAIL_HOST_PASSWORD = 'dmm9831'
 EMAIL_PORT = 587 
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/media/'
+ 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

@@ -17,8 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from Webapp import views
 
+handler404 = 'Webapp.views.handler404'
+handler500 = 'Webapp.views.handler500'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.mainpage),
+    path('admin/clearcache/', include('clearcache.urls')),
+    path('',views.mainpage,name='mainpage'),
+    path('special/',views.special,name='special'),
     path('',include('Webapp.urls')),
+    path('',include('django.contrib.auth.urls')),
+    path('logout/', views.user_logout, name='logout'),
 ]
