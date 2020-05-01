@@ -37,7 +37,7 @@ Analysis_Types = [
 ]
 
 class Order(models.Model):
-    Order_Number = models.CharField(primary_key=True,max_length=50,default='OrderNo',unique=True,blank=True)
+    Order_Number = models.CharField(max_length=50,default='OrderNo',blank=True)
     Date_recieved = models.DateTimeField(auto_now_add=True)
     Client = models.CharField(max_length=256, default='Client name')
     No_of_Samples = models.IntegerField(default=1)
