@@ -583,57 +583,52 @@ h6 {
   padding: 60px 0 40px 0;
 }
 
-#services .box {
-  padding: 30px;
-  position: relative;
+#services {
+  padding: 60px 0;
   overflow: hidden;
-  border-radius: 10px;
-  margin: 0 10px 40px 10px;
-  background: #fff;
-  box-shadow: 0 10px 29px 0 rgba(68, 88, 144, 0.1);
-  transition: all 0.3s ease-in-out;
-  text-align: center;
 }
 
-#services .box:hover {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
+#services #services-list {
+  padding: 0;
+  list-style: none;
 }
 
-#services .icon {
-  margin: 0 auto 15px auto;
-  padding-top: 12px;
-  display: inline-block;
-  text-align: center;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
+#services #services-list li {
+  border-bottom: 1px solid #ebebeb;
 }
 
-#services .icon i {
-  font-size: 36px;
+#services #services-list a {
+  padding: 22px 0;
+  display: block;
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
   line-height: 1;
+  font-weight: 400;
+  padding-right: 20px;
 }
 
-#services .title {
-  font-weight: 700;
-  margin-bottom: 15px;
-  font-size: 18px;
+#services #services-list i {
+  font-size: 24px;
+  position: absolute;
+  right: 0;
+  top: 20px;
 }
 
-#services .title a {
-  color: #111;
+#services #services-list p {
+  margin-bottom: 20px;
 }
 
-#services .box:hover .title a {
+#services #services-list a.collapse {
   color: #1bb1dc;
 }
 
-#services .description {
-  font-size: 14px;
-  line-height: 28px;
-  margin-bottom: 0;
-  text-align: left;
+#services #services-list a.collapsed {
+  color: #000;
+}
+
+#services #services-list a.collapsed i::before {
+  content: "\f2c7" !important;
 }
 
 /* Why Us Section
