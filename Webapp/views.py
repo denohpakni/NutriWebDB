@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from Webapp.forms import MessageForm, OrderForm, UserForm, UserProfileInfoForm, ContactForm
+from Webapp.models import Order
 from django.core.mail import send_mail #email settings
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
@@ -115,6 +116,12 @@ def userinfo(request):
     form = UserProfileInfoForm()
     return render(request,'update_info.html',{'form':form})
 
+# The DB frontend display page
+@login_required(login_url='/user_login/')
+def dbfront(request):
+    all_objects = Order.objects.all()
+    context= {'all_objects': all_objects}
+    return render(request,'dbfront.html',context)
 
 
 ####################################################

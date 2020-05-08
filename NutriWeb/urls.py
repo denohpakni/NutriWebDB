@@ -22,7 +22,6 @@ handler500 = 'Webapp.views.handler500'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('admin/clearcache/', include('clearcache.urls')),
     path('',views.mainpage,name='mainpage'),
     path('special/',views.special,name='special'),
     path('',include('Webapp.urls')),

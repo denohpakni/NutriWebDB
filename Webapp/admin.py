@@ -1,8 +1,11 @@
 from django.contrib import admin
 from Webapp.models import Message, Order, UserProfileInfo, User
 
-# Change db header
-admin.site.site_header = "Nutrition Platform DB"
+
+# Change Admin Title and Header
+admin.site.site_title = "DB"
+admin.site.site_header = "Nutrition Platform DataBase"
+admin.site.index_title = "DB page-Welcome!"
 
 
 # ModelAdmin Class is a representation of user-defined models in the admin panel.

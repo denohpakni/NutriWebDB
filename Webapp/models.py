@@ -15,12 +15,12 @@ class Message(models.Model):
 # Cluent's The Placing an order form
 # sample/order status in the database
 STATUS = [
-    (0,"Ordered"),
-    (1,"Accepted"),
-    (2,"Recieved"),
-    (3,"Extracted"),
-    (4,"QCd"),
-    (5,"Reported"),
+    ('Ordered',"Ordered"),
+    ('Accepted',"Accepted"),
+    ('Recieved',"Recieved"),
+    ('Extracted',"Extracted"),
+    ('QCd',"QCd"),
+    ('Reported',"Reported"),
 ]
 
 Analysis_Types = [
@@ -45,7 +45,7 @@ class Order(models.Model):
     Sample_Reciever = models.CharField(max_length=128,blank=True)
     Analyis_Required = models.CharField(choices=Analysis_Types,default='Unknown',max_length=256)
     Remarks = models.TextField()
-    Stage = models.IntegerField(choices=STATUS, default=0)
+    Stage = models.CharField(choices=STATUS, default='Ordered',max_length=128)
  
 
 # The User information like address, email, 

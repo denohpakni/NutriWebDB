@@ -13,6 +13,7 @@ class OrderForm(forms.ModelForm):
         model = Order
         fields = ('Client','No_of_Samples','Sample_Type','Analyis_Required','Remarks')
 
+
 ##############################
 ##### User Profile info #####
 ##############################
