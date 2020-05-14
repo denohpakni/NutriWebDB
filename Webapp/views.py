@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from Webapp.forms import MessageForm, OrderForm, UserForm, UserProfileInfoForm, ContactForm
+from django.contrib.auth.forms import UserCreationForm
 from Webapp.models import Order
 from django.core.mail import send_mail #email settings
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
+from django.db import transaction
 from django.contrib.auth.decorators import login_required
 
 
@@ -43,23 +45,30 @@ def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('mainpage'))
 
+
+@transaction.atomic
 def register(request):
     registered = False
     if request.method == 'POST':
-        user_form = UserForm(data=request.POST)
-        if user_form.is_valid():
+        user_form = UserCreationForm(request.POST)
+        profile_form = UserProfileInfoForm(request.POST)
+        if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
-            user.set_password(user.password)
-            user.save()
+            user.refresh_from_db()  # This will load the Profile created by the Signal
+            profile_form = UserProfileInfoForm(request.POST, instance=user.userprofileinfo)  # Reload the profile form with the profile instance
+            profile_form.full_clean()  # Manually clean the form this time. It is implicitly called by "is_valid()" method
+            profile_form.save()  # Gracefully save the form
             registered = True
             return redirect('Webapp:userinfo')
         else:
             print(user_form.errors)
     else:
-        user_form = UserForm()
-    return render(request,'registration.html',
+        user_form = UserCreationForm()
+        profile_form = UserProfileInfoForm()
+    return render(request,'signup.html',
                           {'user_form':user_form,
-                           'registered':registered})
+                           'registered':registered,
+                           'profile_form': profile_form})
 
 def user_login(request):
     if request.method == 'POST':

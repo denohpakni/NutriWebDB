@@ -18,8 +18,8 @@ class OrderA(admin.ModelAdmin):
     list_filter = ['Stage','Analyis_Required']
 
 class UserProfileInfoA(admin.ModelAdmin):
-    fields = ['User','contact_number','Organisation_name','Address','Town_or_City','Postcode_or_zip_code','Country']
-    list_display = ['contact_number','Organisation_name','Country']
+    fields = ['first_name','last_name','email','contact_number','birth_date','Organisation_name','Address','Town_or_City','Postcode_or_zip_code','Country']
+    list_display = ['first_name','last_name','Organisation_name','Country']
     search_fields = ['User']
 
 # Register your models after describing them.

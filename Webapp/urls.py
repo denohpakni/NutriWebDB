@@ -11,6 +11,6 @@ urlpatterns = [
     path('register/',views.register,name='register'),
     path('thanks/',views.thanks,name='thanks'),
     path('userinfo/',views.userinfo,name='userinfo'),
-    path('db',views.dbfront,name='dbfront'),
+    path('db/',views.dbfront,name='dbfront'),
     path('sbc/',views.sbcform,name='sbcform'),
 ]

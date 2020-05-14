@@ -72,6 +72,18 @@
       </nav><!-- .main-nav -->
       
     </div>
+    {% if user.is_staff %}
+       <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="/admin/">DataBase</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/db">dbTable</a>
+        </li>
+      </ul>
+    {% endif %}
+
+
   </header><!-- #header -->
 
   {% block body %}

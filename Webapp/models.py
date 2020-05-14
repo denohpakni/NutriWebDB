@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 # Create your models here.
 # The contact form from the client
@@ -50,10 +52,21 @@ class Order(models.Model):
 
 # The User information like address, email, 
 class UserProfileInfo(models.Model):
-    name = models.CharField(default=User,max_length=256)
-    contact_number = models.PositiveIntegerField()
-    Organisation_name = models.TextField(blank=True)
-    Address = models.CharField(max_length=128,blank=True)
-    Town_or_City = models.CharField(max_length=128,blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=60, blank=True)
+    last_name = models.CharField(max_length=60, blank=True)
+    email = models.EmailField(max_length=100, blank=True)
+    contact_number = models.IntegerField(null=True)
+    birth_date = models.DateField(null=True, blank=True)
+    Organisation_name = models.CharField(max_length=500,blank=True)
+    Address = models.CharField(max_length=256,blank=True)
     Postcode_or_zip_code = models.CharField(max_length=128,blank=True)
-    Country = models.CharField(max_length=128)
+    Town_or_City = models.CharField(max_length=128,blank=True)
+    Country = models.CharField(max_length=256)
+
+
+@receiver(post_save, sender=User)
+def update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserProfileInfo.objects.create(user=instance)
+    instance.userprofileinfo.save()
