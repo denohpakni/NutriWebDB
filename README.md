@@ -10,6 +10,8 @@ Django==3.0.6
 django-adminlte3==0.1.6
 django-bootstrap4==1.1.1
 django-countries==6.1.2
+django-gunicorn==0.1.1
+gunicorn==20.0.4
 isort==4.3.21
 lazy-object-proxy==1.4.3
 mccabe==0.6.1
@@ -19,7 +21,9 @@ six==1.15.0
 soupsieve==2.0.1
 sqlparse==0.3.1
 toml==0.10.1
+whitenoise==5.1.0
 wrapt==1.12.1
+
 
 ## Achievements; 
 > 12/5/20 
