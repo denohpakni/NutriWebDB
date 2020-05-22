@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from Webapp.forms import MessageForm, OrderForm, UserForm, UserProfileInfoForm, ContactForm
+from Webapp.forms import MessageForm, OrderForm, UserForm, UserProfileInfoForm
 from django.contrib.auth.forms import UserCreationForm
-from Webapp.models import Order
+from Webapp.models import Order, UserProfileInfo
 from django.core.mail import send_mail #email settings
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
@@ -55,7 +55,7 @@ def register(request):
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
             user.refresh_from_db()  # This will load the Profile created by the Signal
-            profile_form = UserProfileInfoForm(request.POST, instance=user.userprofileinfo)  # Reload the profile form with the profile instance
+            profile_form = UserProfileInfoForm(request.POST)  # Reload the profile form with the profile instance
             profile_form.full_clean()  # Manually clean the form this time. It is implicitly called by "is_valid()" method
             profile_form.save()  # Gracefully save the form
             registered = True
@@ -91,18 +91,22 @@ def user_login(request):
 
 @login_required(login_url='/user_login/')
 def order(request):
-    if request.method == 'POST':
-        form = OrderForm(request.POST)
-        if form.is_valid():
-            form.save()
-            # send email
-            from_email = settings.EMAIL_HOST_USER # the Domain email
-            Client = form.cleaned_data['Client']
-            Analyis_Required = form.cleaned_data['Analyis_Required']
-            recipient_list = ['denohpakni@yahoo.com']
+    form = OrderForm
+    if request.user.is_authenticated:
+        form = OrderForm(request.POST or None)
+        if request.method == 'POST':
+            if form.is_valid():
+                order = form.save(commit=False)
+                order.Client = request.user
+                order.save()
+                # send email
+                from_email = settings.EMAIL_HOST_USER # the Domain email            
+                Analyis_Required = form.cleaned_data['Analyis_Required']
+                Remarks = form.cleaned_data['Remarks']
+                recipient_list = ['denohpakni@yahoo.com']
 
-            send_mail(Client,Analyis_Required,from_email,recipient_list,fail_silently=True)
-            return redirect('Webapp:thanks')
+                send_mail(Analyis_Required,Remarks,from_email,recipient_list,fail_silently=True)
+                return redirect('Webapp:thanks')
     else:
         form = OrderForm()
     return render(request,'order.html',{'form':form})
@@ -116,14 +120,10 @@ def handler500(request, *args, **argv):
 
 @login_required(login_url='/user_login/')
 def userinfo(request):
-    if request.method == 'POST':
-        form = UserProfileInfoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('mainpage'))  
-
-    form = UserProfileInfoForm()
-    return render(request,'update_info.html',{'form':form})
+    myinfo = UserProfileInfo
+    myorder = Order
+    context = {'myinfo':myinfo,'myorder':myorder}
+    return render(request,'userinfo.html',context)
 
 # The DB frontend display page
 @login_required(login_url='/user_login/')
@@ -133,14 +133,3 @@ def dbfront(request):
     return render(request,'dbfront.html',context)
 
 
-####################################################
-########## A Simple but Complex Form ###############
-####################################################
-def sbcform(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            pass  # does nothing, just trigger the validation
-    else:
-        form = ContactForm()
-    return render(request, 'sbcform.html', {'form': form})

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% load static %}
 
 {% block body %}
@@ -46,7 +47,10 @@
       About Us Section
     ============================-->
     <section id="about">
-
+      <header class="section-header">
+        <h3>The Mycotoxin and Nutrition Analysis platform</h3>
+        <p>High-end analytical testing and analysis</p>
+      </header>
       <div class="container">
         <div class="row">
 
@@ -74,7 +78,6 @@
       Service Section
     ============================-->
     <section id="services" class="section-bg">
-
       <div class="container">
             <header class="section-header">
               <h3>Request For a Service</h3>
@@ -425,13 +428,14 @@
           <li>
             <a data-toggle="collapse" href="#faq3" class="collapsed">Who manages the Platform? <i class="ion-android-remove"></i></a>
             <div id="faq3" class="collapse" data-parent="#faq-list">
-              <p>The Mycotoxin and Nutrition Analysis platform team
-                is led by a technology manager and comprises a
-                diagnostics platform manager/assistant technology
-                manager, research associates, a laboratory procurement
-                assistant and general laboratory assistants.<br>
-                The ILRI engineering unit conducts regular maintenance
-                and repair of equipment on the platform.</p>
+              <p>The Mycotoxin and Nutrition platform is managed by a team led by the Head of Technology and comprising of a diagnostics platform manager/assistant to the Head of Technology,
+                 a research officer and a research associate.<br>
+                 The platform is supported by;<br>
+                a)	The ILRI engineering unit that conducts regular maintenance and repair of equipment<br>
+                b)	The occupational health and safety unit who provides support in biosafety related matters<br>
+                c)	The ILRI procurement team that helps in the purchase of consumables and other requirements of the platform<br>
+                d)	Laboratory assistants who offer support in cleaning of floor, work benches and access to central core unit for cleaning and sterilization of glassware.
+                </p>
             </div>
           </li>
 
@@ -547,7 +551,7 @@
               <form action="" method="POST" role="form" class="contactForm">
 
                 {% csrf_token %}
-                {% include 'bs4_form.html' with form=form %}
+                {% bootstrap_form form %}
 
                 <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
               </form>

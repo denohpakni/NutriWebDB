@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'adminlte3',
     # Optional: Django admin theme (must be before django.contrib.admin)
     'adminlte3_theme',
+    'bootstrap4',
+    'django_countries',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

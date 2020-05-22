@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
-
+{% load bootstrap4 %}
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -35,6 +35,27 @@
   ============================-->
   <header id="header">
 
+    <!-- Staff Navigation -->
+    {% if user.is_staff %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+          <img src="{% static "img/NutritionPlatformLogo.png" %}" alt="Logo"></a>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/db">Orders<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/">DataBase</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    {% endif %}
+<!-- ========= End of Staff nav ============ -->
+
     <div id="topbar">
       <div class="container">
         <div class="social-links">
@@ -57,32 +78,39 @@
       <nav class="main-nav float-right d-none d-lg-block">
         <ul>
           <li class="active"><a href="/">Home</a></li>
-          <li><a href="/#about">About Us</a></li>
-          <li><a href="/#services">Services</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">About us</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/#about">About us</a>
+              <a class="dropdown-item" href="/#services">Services</a>
+              <a class="dropdown-item" href="/#why-us">Why Us</a>
+              <a class="dropdown-item" href="/#clients">Our Clients</a>
+              <a class="dropdown-item" href="/#team">The Team</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/#faq">FAQs</a>
+            </div>
+          </li>          
           <li class="current"><a href="/order/">Make an Order</a></li>
           <li><a href="/#footer">Contact Us</a></li>
           <li><a href="{% url 'Webapp:register' %}">Register</a></li>
           {# Some logic on what to display for last item#}
           {% if user.is_authenticated %}
+          <li class="nav-item dropdown profile">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="fa fa-user"></span><span>{{ request.user.username }}</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">My Order</a>           
+          </div>
+          </li>
           <li><a href="{% url 'logout' %}">Logout</a></li>
           {% else %}
           <li><a href="{% url 'Webapp:user_login' %}">Login</a></li>
-          {% endif %}
+          {% endif %}          
         </ul>
       </nav><!-- .main-nav -->
       
     </div>
-    {% if user.is_staff %}
-       <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" href="/admin/">DataBase</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/db">dbTable</a>
-        </li>
-      </ul>
-    {% endif %}
-
 
   </header><!-- #header -->
 

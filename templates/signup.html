@@ -1,6 +1,6 @@
 <!doctype html>
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% load bootstrap4 %}
 {% load static %}
 {% block title %}Register{% endblock %}
 {% block body %}
@@ -15,12 +15,14 @@
           <h1>Thank you for registering!</h1>
         {% else %}
           <h1>Register Here</h1>
-          <h3>Just fill out the form.</h3>
+          <h3>Please fill out this form.</h3>
           <form class="lead" enctype="multipart/form-data" method="POST">
             {% csrf_token %}
-            {% include 'bs4_form.html' with form=user_form %}
-            {% include 'bs4_form.html' with form=profile_form %}
-            <input type="submit" name="" value="Register">
+            {% bootstrap_form user_form %}
+            {% bootstrap_form profile_form %}
+            {% buttons %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+            {% endbuttons %}
           </form>
 </div>
 </div>

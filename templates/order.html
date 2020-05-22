@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% block title %}Place an Order{% endblock %}
 {% load static %}
 
@@ -12,10 +13,14 @@
             <div>
                 <h4>Make an Order</h4>
                 <p>Asuming you've already discussed with the guys at the Nutrition Platform.</p>
+                <p>Please make an order of <strong>One Service per Order</strong></p>
                 <form action="" method="POST">
                 {% csrf_token %}
-                {% include 'bs4_form.html' with form=form %}
-                <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
+                {% bootstrap_form form %}
+                <div class="text-center">
+                  {% buttons %}
+                  <button type="submit" class="btn btn-primary">Send Message</button>
+                  {% endbuttons %}</div>
                 </form>
             </div>
           </div>
