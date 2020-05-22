@@ -33,8 +33,6 @@ ALLOWED_HOSTS = ['nutritionplatform.herokuapp.com','127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    'crispy_forms',
-    # General use templates & template tags (should appear first)
     'adminlte3',
     # Optional: Django admin theme (must be before django.contrib.admin)
     'adminlte3_theme',
@@ -47,7 +45,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Webapp',
-    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
