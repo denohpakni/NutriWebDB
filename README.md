@@ -1,5 +1,8 @@
 For the Nutrition platform for the front-end and back-end.
 
+Requirements
+
+
 ## Achievements; 
 > 12/5/20 
 1. Figured out how to avail a navbar only to a Staff user to view database
