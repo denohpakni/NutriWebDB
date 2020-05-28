@@ -88,14 +88,11 @@
                   <li>
                     <a data-toggle="collapse" class="collapsed ion-ios-analytics-outline" href="#services1">Food safety <i class="ion-android-remove"></i></a>
                     <div id="services1" class="collapse" data-parent="#services-list">
-                    <ul>
-                      <li> Analysis of aflatoxins (B1, B2, G1, G2) in food and feedstuff, 
-                        aflatoxin M1 in milk through ultra-perfomance liuid chromatography fluorescence detection &nbsp; <a href="#" class="order-service">Add Service</a></li>  
-                        
-                      <li>Analysis of multi mycotoxin using UPLC-MS/MS. &nbsp; <a href="#" class="order-service">Add Service</a></li>
-                      <li> Cross validation of rapid aflatoxin detection kits with UPLC-FLD across different matrices &nbsp; <a href="#" class="order-service">Add Service</a></li>
-                      <li>Multi-residue pesticide analysis &nbsp; <a href="#" class="order-service">Add Service</a></li>
-                    </ul>
+                      <ul>
+                        {% for food_safety_service in food_safety_services %}
+                        <li>{{ food_safety_service.description }}  &nbsp; <a href="#" class="order-service">Add Service</a></li>
+                        {% endfor %}
+                      </ul>
                     </div>
                   </li>
     
@@ -104,32 +101,9 @@
                   <a data-toggle="collapse" href="#services2" class="collapsed ion-ios-bookmarks-outline">Food nutrition <i class="ion-android-remove"></i></a>
                   <div id="services2" class="collapse" data-parent="#services-list">
                     <ul>
-                      <li> Analysis of inorganic elemens (Fe, Zn, Mg, Co, Ca,K, Na, P Mn) in various plant matrices
-                        &nbsp; <a href="#" class="order-service">Add Service</a>
-                      </li>
-                      <li>Profiling of isoflavones in soy based food and supplements through UPLC-PDA<
-                        &nbsp; <a href="#" class="order-service">Add Service</a>/li>
-                      <li> Assesment of essential amino acids in food and feedstuff
-                        &nbsp; <a href="#" class="order-service">Add Service</a>
-                      </li>
-                      <li>Profiling of fatty acid methyl esters by gas chromatography mass spectometry (GC-MS)
-                        &nbsp; <a href="#" class="order-service">Add Service</a>
-                      </li>
-                      <li>Profiling of volatile organic compounds using head space solid phase micro extraction gas chromatography mass spectometry (HS-SPME-GCMS)
-                        &nbsp; <a href="#" class="order-service">Add Service</a>
-                      </li>
-                      <li>Determination of nutritional and antinutritional phytochemicals in food and feed .e.g phenolics, flavanoids, anti-oxidant activity, tannins, oxalates,phytates etc..
-                        &nbsp; <a href="#" class="order-service">Add Service</a>
-                      </li>
-                      <li>not fat (SnF), freezing point depression (FPD), total acidity, density, free fatty acids (FFA), citric acids, casein, urea, sucrose, glucose, fructose, galactose
-                        &nbsp; <a href="#" class="order-service">Add Service</a>
-                      </li>
-                      <li>Determination of proximates composition in raw and processed food and feed products
-                        &nbsp; <a href="#" class="order-service">Add Service</a>
-                      </li>
-                      <li>Determination of various proximate in raw and processed milk (fat, protein, lactose, total solids, solids )
-                        &nbsp; <a href="#" class="order-service">Add Service</a>
-                      </li>
+                      {% for food_nutrition_service in food_nutrition_services %}
+                      <li>{{ food_nutrition_service.description }}  &nbsp; <a href="#" class="order-service">Add Service</a></li>
+                      {% endfor %}
                     </ul>
                   </div>
                 </li>
@@ -138,14 +112,10 @@
                   <a data-toggle="collapse" href="#services3" class="collapsed ion-ios-paper-outline">Others <i class="ion-android-remove"></i></a>
                   <div id="services3" class="collapse" data-parent="#services-list">
                     <ul>
-                      <li> Untargeted GC-MS and UPLC-MS metabolite prfiling
-                        &nbsp; <a href="#" class="order-service">Add Service</a>
-                      </li>
-                      <li>Targeted UPLC-MS/MS profiling of strigolactones
-                        &nbsp; <a href="#" class="order-service">Add Service</a>
-                      </li>
-
-                      </ul>
+                      {% for others_service in others_services %}
+                      <li>{{ others_service.description }}  &nbsp; <a href="#" class="order-service">Add Service</a></li>
+                      {% endfor %}
+                    </ul>
                   </div>
                 </li>
 
@@ -153,9 +123,9 @@
                 <a data-toggle="collapse" href="#services4" class="collapsed ion-ios-speedometer-outline">Training <i class="ion-android-remove"></i></a>
                 <div id="services4" class="collapse" data-parent="#services-list">
                   <ul>
-                    <li>Training on demand
-                      &nbsp; <a href="#" class="order-service">Add Service</a>
-                    </li>
+                    {% for training_service in training_services %}
+                    <li>{{ training_service.description }}  &nbsp; <a href="#" class="order-service">Add Service</a></li>
+                    {% endfor %}
                   </ul>
                 </div>
               </li>

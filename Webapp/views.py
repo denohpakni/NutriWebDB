@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from Webapp.forms import MessageForm, OrderForm, UserForm, UserProfileInfoForm
 from django.contrib.auth.forms import UserCreationForm
-from Webapp.models import Order, UserProfileInfo
+from Webapp.models import Order, UserProfileInfo,FoodSafetyService, FoodNutritionService,OthersService,TraininService
 from django.core.mail import send_mail #email settings
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
@@ -13,6 +13,11 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def mainpage(request):
+    food_nutrition_services = FoodNutritionService.objects.all()
+    food_safety_services = FoodSafetyService.objects.all()
+    others_services = OthersService.objects.all()
+    training_services= TraininService.objects.all()
+
     if request.method == 'POST':
         form = MessageForm(request.POST)
 
@@ -22,13 +27,14 @@ def mainpage(request):
             from_email = settings.EMAIL_HOST_USER # the Domain email
             firstname = form.cleaned_data['first_name']
             message = form.cleaned_data['message']
-            recipient_list = ['denohpakni@yahoo.com']
+            recipient_list = ['mosendirits@gmail.com']
 
             send_mail(firstname,message,from_email,recipient_list,fail_silently=True)
             return redirect('Webapp:thanks')
     else:
         form = MessageForm()
-    return render(request,'index.html',{'form':form})
+    return render(request,'index.html',{'form':form,'food_nutrition_services':food_nutrition_services,
+    'food_safety_services':food_safety_services,'others_services':others_services,'training_services':training_services})
 
 def thanks(request):
     return render(request,'thanks.html')

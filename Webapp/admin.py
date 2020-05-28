@@ -1,5 +1,5 @@
 from django.contrib import admin
-from Webapp.models import Message, Order, UserProfileInfo, User
+from Webapp.models import Message, Order, UserProfileInfo, User, FoodSafetyService, FoodNutritionService,OthersService, TraininService
 
 
 # Change Admin Title and Header
@@ -27,3 +27,7 @@ class UserProfileInfoA(admin.ModelAdmin):
 admin.site.register(Order, OrderA)
 admin.site.register(Message)
 admin.site.register(UserProfileInfo,UserProfileInfoA)
+admin.site.register(FoodSafetyService)
+admin.site.register(FoodNutritionService)
+admin.site.register(OthersService)
+admin.site.register(TraininService)

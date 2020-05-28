@@ -74,3 +74,32 @@ class UserProfileInfo(models.Model):
     Town_or_City = models.CharField(max_length=128,blank=True)
     Country = CountryField(blank_label='(select country)')
 
+
+class FoodSafetyService(models.Model):
+    code = models.CharField(max_length=120)
+    description= models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.description
+
+class FoodNutritionService(models.Model):
+    code = models.CharField(max_length=120)
+    description= models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.description
+
+class OthersService(models.Model):
+    code = models.CharField(max_length=120)
+    description= models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.description
+
+class TraininService(models.Model):
+    code = models.CharField(max_length=120)
+    description= models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.description
+
