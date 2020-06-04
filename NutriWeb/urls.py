@@ -25,6 +25,7 @@ urlpatterns = [
     path('',views.mainpage,name='mainpage'),
     path('special/',views.special,name='special'),
     path('',include('Webapp.urls')),
+    path('shopping_cart', include('shopping_cart.urls')),
     path('',include('django.contrib.auth.urls')),
     path('logout/', views.user_logout, name='logout'),
 ]

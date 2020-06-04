@@ -9,6 +9,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.db import transaction
 from django.contrib.auth.decorators import login_required
+from shopping_cart.models import OrderServices, OrderServicesNutrition, OrderServicesOthers,OrderServicesTraining
 
 
 # Create your views here.
@@ -17,6 +18,39 @@ def mainpage(request):
     food_safety_services = FoodSafetyService.objects.all()
     others_services = OthersService.objects.all()
     training_services= TraininService.objects.all()
+    current_order_safety = []
+    current_order_nutrition = []
+    current_order_others = []
+    current_order_trainin = []
+    if request.user.is_authenticated:
+        filtered_safety_services = OrderServices.objects.filter(owner=request.user.profile, is_ordered=False)
+        filtered_nutrition_services = OrderServicesNutrition.objects.filter(owner= request.user.profile, is_ordered=False)
+        print(filtered_safety_services)
+        print(filtered_nutrition_services)
+        filtered_others_services = OrderServicesOthers.objects.filter(owner=request.user.profile, is_ordered=False)
+        filtered_training_services = OrderServicesTraining.objects.filter(owner=request.user.profile, is_ordered=False)
+        
+        if filtered_safety_services.exists():
+            user_order = filtered_safety_services[0]
+            user_order_items = user_order.items.all()
+            current_order_safety = [service.service for service in user_order_items]
+
+
+        if filtered_nutrition_services.exists():
+            user_order = filtered_nutrition_services[0]
+            user_order_items = user_order.items.all()
+            current_order_nutrition = [service.service for service in user_order_items]
+
+        if filtered_others_services.exists():
+            user_order = filtered_others_services[0]
+            user_order_items = user_order.items.all()
+            current_order_others = [service.service for service in user_order_items]
+
+        if filtered_training_services.exists():
+            user_order = filtered_training_services[0]
+            user_order_items = user_order.items.all()
+            current_order_trainin = [service.service for service in user_order_items]
+    
 
     if request.method == 'POST':
         form = MessageForm(request.POST)
@@ -33,8 +67,15 @@ def mainpage(request):
             return redirect('Webapp:thanks')
     else:
         form = MessageForm()
-    return render(request,'index.html',{'form':form,'food_nutrition_services':food_nutrition_services,
-    'food_safety_services':food_safety_services,'others_services':others_services,'training_services':training_services})
+    
+    
+
+    context = {'form':form,'food_nutrition_services':food_nutrition_services,
+    'food_safety_services':food_safety_services,'others_services':others_services,
+    'training_services':training_services,'current_order_safety': current_order_safety,
+    'current_order_nutrition': current_order_nutrition,'current_order_others': current_order_others
+    ,'current_order_trainin': current_order_trainin}
+    return render(request,'index.html',context)
 
 def thanks(request):
     return render(request,'thanks.html')

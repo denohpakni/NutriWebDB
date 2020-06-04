@@ -90,7 +90,16 @@
                     <div id="services1" class="collapse" data-parent="#services-list">
                       <ul>
                         {% for food_safety_service in food_safety_services %}
-                        <li>{{ food_safety_service.description }}  &nbsp; <a href="#" class="order-service">Add Service</a></li>
+                        <li>{{ food_safety_service.description }}  &nbsp; 
+                          {% if food_safety_service in user.profile.services %}
+                          You own this 
+                          {% elif food_safety_service in current_order_safety%}
+                          <a href="{% url 'shopping_cart:add_to_cart' food_safety_service.id %}" class="order-service">Go to Cart</a>
+                          {%else%}
+                          <a href="{% url 'shopping_cart:add_to_cart' food_safety_service.id %}" 
+                           class="order-service">Add Service</a>
+                          {%endif%}
+                          </li>
                         {% endfor %}
                       </ul>
                     </div>
@@ -102,7 +111,16 @@
                   <div id="services2" class="collapse" data-parent="#services-list">
                     <ul>
                       {% for food_nutrition_service in food_nutrition_services %}
-                      <li>{{ food_nutrition_service.description }}  &nbsp; <a href="#" class="order-service">Add Service</a></li>
+                      <li>{{ food_nutrition_service.description }}  &nbsp; 
+                        {% if food_nutrition_service in user.profile.services %}
+                        You own this 
+                        {% elif food_nutrition_service in current_order_nutrition%}
+                        <a href="{% url 'shopping_cart:add_to_cart' food_nutrition_service.id %}" class="order-service">Go to Cart</a>
+                        {%else%}
+                        <a href="{% url 'shopping_cart:add_to_cart' food_nutrition_service.id %}" 
+                         class="order-service">Add Service</a>
+                        {%endif%}
+                        </li>
                       {% endfor %}
                     </ul>
                   </div>
@@ -113,7 +131,16 @@
                   <div id="services3" class="collapse" data-parent="#services-list">
                     <ul>
                       {% for others_service in others_services %}
-                      <li>{{ others_service.description }}  &nbsp; <a href="#" class="order-service">Add Service</a></li>
+                      <li>{{ others_service.description }}  &nbsp; 
+                        {% if others_service in user.profile.services %}
+                        You own this 
+                        {% elif others_service in current_order_others%}
+                        <a href="{% url 'shopping_cart:add_to_cart' others_service.id %}" class="order-service">Go to Cart</a>
+                        {%else%}
+                        <a href="{% url 'shopping_cart:add_to_cart' others_service.id %}" 
+                         class="order-service">Add Service</a>
+                        {%endif%}
+                        </li>
                       {% endfor %}
                     </ul>
                   </div>
@@ -124,7 +151,16 @@
                 <div id="services4" class="collapse" data-parent="#services-list">
                   <ul>
                     {% for training_service in training_services %}
-                    <li>{{ training_service.description }}  &nbsp; <a href="#" class="order-service">Add Service</a></li>
+                    <li>{{ training_service.description }}  &nbsp; 
+                      {% if training_service in user.profile.services %}
+                      You own this 
+                      {% elif training_service in current_order_trainin%}
+                      <a href="{% url 'shopping_cart:add_to_cart' training_service.id %}" class="order-service">Go to Cart</a>
+                      {%else%}
+                      <a href="{% url 'shopping_cart:add_to_cart' training_service.id %}" 
+                       class="order-service">Add Service</a>
+                      {%endif%}
+                      </li>
                     {% endfor %}
                   </ul>
                 </div>
