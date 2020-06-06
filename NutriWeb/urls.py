@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from Webapp import views
+from django.conf.urls import url
+
 
 handler404 = 'Webapp.views.handler404'
 handler500 = 'Webapp.views.handler500'
@@ -25,7 +27,7 @@ urlpatterns = [
     path('',views.mainpage,name='mainpage'),
     path('special/',views.special,name='special'),
     path('',include('Webapp.urls')),
-    path('shopping_cart', include('shopping_cart.urls')),
+    path('cart/', include('shopping_cart.urls')),
     path('',include('django.contrib.auth.urls')),
     path('logout/', views.user_logout, name='logout'),
 ]

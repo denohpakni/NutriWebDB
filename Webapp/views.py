@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from Webapp.forms import MessageForm, OrderForm, UserForm, UserProfileInfoForm
 from django.contrib.auth.forms import UserCreationForm
-from Webapp.models import Order, UserProfileInfo,FoodSafetyService, FoodNutritionService,OthersService,TraininService
+from Webapp.models import Order, UserProfileInfo,Services
 from django.core.mail import send_mail #email settings
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
@@ -14,18 +14,16 @@ from shopping_cart.models import OrderServices
 
 # Create your views here.
 def mainpage(request):
-    food_nutrition_services = FoodNutritionService.objects.all()
-    food_safety_services = FoodSafetyService.objects.all()
+    services = Services.objects.all()
+    
     current_order_services = []
     if request.user.is_authenticated:
-        filtered_safety_services = OrderServices.objects.filter(owner=request.user.profile, is_ordered=False)
+        filtered_services = OrderServices.objects.filter(owner=request.user.profile, is_ordered=False)
         
-        if filtered_safety_services.exists():
-            user_order = filtered_safety_services[0]
+        if filtered_services.exists():
+            user_order = filtered_services[0]
             user_order_items = user_order.items.all()
             current_order_services = [service.service for service in user_order_items]
-    others_services = OthersService.objects.all()
-    training_services= TraininService.objects.all()
 
     if request.method == 'POST':
         form = MessageForm(request.POST)
@@ -42,12 +40,8 @@ def mainpage(request):
             return redirect('Webapp:thanks')
     else:
         form = MessageForm()
-    
-    print(current_order_services)
 
-    context = {'form':form,'food_nutrition_services':food_nutrition_services,
-    'food_safety_services':food_safety_services,'others_services':others_services,
-    'training_services':training_services,'current_order_services': current_order_services}
+    context = {'form':form,'services':services,'current_order_services': current_order_services}
     return render(request,'index.html',context)
 
 def thanks(request):

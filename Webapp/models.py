@@ -4,6 +4,7 @@ from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django_countries.fields import CountryField
+
 # Create your models here.
 # The contact form from the client
 class Message(models.Model):
@@ -57,18 +58,18 @@ class Order(models.Model):
     Remarks = models.TextField()
     Stage = models.CharField(choices=STATUS, default='Ordered',max_length=128)
 
-class FoodSafetyService(models.Model):
+class Services(models.Model):
     code = models.CharField(max_length=120)
     description= models.CharField(max_length=500)
+    category= models.CharField(max_length=120)
 
     def __str__(self):
         return self.description
- 
+
 
 # The User information like address, email, 
 class UserProfileInfo(models.Model):
     User= settings.AUTH_USER_MODEL
-    services = models.ManyToManyField(FoodSafetyService, blank=True)
     Client = models.ForeignKey(User,null=True,on_delete = models.CASCADE)
     first_name = models.CharField(max_length=60, blank=True)
     last_name = models.CharField(max_length=60, blank=True)
@@ -83,7 +84,7 @@ class UserProfileInfo(models.Model):
 
 class Profile(models.Model):
     user= models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    services = models.ManyToManyField(FoodSafetyService, blank=True)
+    services = models.ManyToManyField(Services, blank=True)
 
     def __str__(self):
         return self.user.username
@@ -94,24 +95,4 @@ def post_save_profile_create(sender, instance, created, *args, **kwargs):
 
 post_save.connect(post_save_profile_create, sender=settings.AUTH_USER_MODEL)
 
-class FoodNutritionService(models.Model):
-    code = models.CharField(max_length=120)
-    description= models.CharField(max_length=500)
-
-    def __str__(self):
-        return self.description
-
-class OthersService(models.Model):
-    code = models.CharField(max_length=120)
-    description= models.CharField(max_length=500)
-
-    def __str__(self):
-        return self.description
-
-class TraininService(models.Model):
-    code = models.CharField(max_length=120)
-    description= models.CharField(max_length=500)
-
-    def __str__(self):
-        return self.description
 

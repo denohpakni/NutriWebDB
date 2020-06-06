@@ -1,10 +1,10 @@
 from django.db import models
 
-from Webapp.models import FoodSafetyService
+from Webapp.models import Services
 from Webapp.models import Profile
 
-class FoodSafetyItem(models.Model):
-    service = models.OneToOneField(FoodSafetyService, on_delete=models.SET_NULL,null=True)
+class ServiceItem(models.Model):
+    service = models.OneToOneField(Services, on_delete=models.SET_NULL,null=True)
     is_ordered = models.BooleanField(default=False)
     date_added = models.DateTimeField(auto_now=True)
     date_ordered= models.DateTimeField(null=True)
@@ -16,7 +16,7 @@ class OrderServices(models.Model):
     ref_code= models.CharField(max_length=15)
     owner = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True)
     is_ordered = models.BooleanField(default=False)
-    items = models.ManyToManyField(FoodSafetyItem)
+    items = models.ManyToManyField(ServiceItem)
     date_ordered = models.DateTimeField(auto_now=True)
 
     def get_cart_items(self):

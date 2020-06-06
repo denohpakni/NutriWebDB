@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+
+<section id="intro" class=" clearfix">
+   <div class=" container d-flex h-100">
+     <div class="row justify-content-center align-self-center">
+    <table class="table table-hover table-bordered text-center">
+      <tr class="text-center">
+        <th>no.</th>
+        <th>Service</th>
+      </tr>
+      {% for item in order.get_cart_items %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>
+            {{ item.service.description }}
+            <span class="pull-right">
+              <a href="{% url 'shopping_cart:delete_item' item.id %}"  data-balloon="remove this item from cart" class="text-danger" onclick="return confirm_delete();">
+                <i class="fas fa-trash"></i>
+              </a>
+            </span>
+          </td>
+         
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan= 3> You have not added any items yet.</td>
+        </tr>
+      {% endfor %}
+     
+      <tr>
+        <td colspan=1 >
+          <a href="{% url 'Webapp:services' %}" class="btn btn-warning pull-left">
+            {% if order %}Add more Services{% else %}Add Services First {% endif %}
+          </a> 
+        </td>
+        <td colspan=2>
+          {% if order.get_cart_items %}
+            <a href="#" class="pull-right btn btn-primary">Proceed to Checkout</a>
+          {% endif %}
+        </td>
+      </tr>
+    </table>
+     
+   </div>
+  </div>
+ </section>
+
+{% block scripts %}
+  {{ block.super }}
+  <script>
+  function confirm_delete(){
+    return confirm("Do you want to remove this item from cart?");
+  }
+  </script>
+{% endblock scripts %}
+
+ <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer" class="section-bg">
+    <div class="footer-top">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-6">
+
+            <div class="row">
+
+                <div class="col-sm-6">
+
+                  <div class="footer-info">
+                    <h3>The Nutrition Platform</h3>
+                    <p>Analytical testing Services and support in food safety, food nutrition and related
+                      agricultural applications.</p>
+                  </div>
+
+                 
+
+                </div>
+
+                <div class="col-sm-6">
+                 
+
+                  <div class="footer-links">
+                    <h4>Contact Us</h4>
+                    <p>
+                      P.O Box 30709<br>
+                      Nairobi 00100<br>
+                      Kenya <br>
+                      <strong>Phone:</strong> +254 20 422 3384<br>
+                      <strong>Email:</strong> mycnutplatform@cgiar.org<br>
+                    </p>
+                  </div>
+
+                  <div class="social-links">
+                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                  </div>
+
+                </div>
+
+            </div>
+
+          </div>
+
+        
+
+          
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>BecA-ILRI</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!--
+          All the links in the footer should remain intact.
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Rapid
+        -->
+        Designed using <a href="https://www.djangoproject.com/" target="_blank">Django</a>
+      </div>
+    </div>
+  </footer><!-- #footer -->
+
+{% endblock %}
