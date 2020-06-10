@@ -30,6 +30,18 @@
           <td colspan= 3> You have not added any items yet.</td>
         </tr>
       {% endfor %}
+
+      <tr>
+        {% if order.get_cart_items != None %}
+        <td colspan=1>
+          <strong class="pull-right">Number Of Samples:</strong>
+        </td>
+        
+        <td colspan= 1>
+          <input type="number" id="quantity" name="quantity" min="1">
+        </td>
+        {% endif %}
+      </tr>
      
       <tr>
         <td colspan=1 >
@@ -37,11 +49,13 @@
             {% if order %}Add more Services{% else %}Add Services First {% endif %}
           </a> 
         </td>
-        <td colspan=2>
+        
+         <td colspan=2>
           {% if order.get_cart_items %}
             <a href="#" class="pull-right btn btn-primary">Proceed to Checkout</a>
           {% endif %}
-        </td>
+        </td> 
+      
       </tr>
     </table>
      

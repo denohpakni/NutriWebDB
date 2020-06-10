@@ -15,6 +15,7 @@ class ServiceItem(models.Model):
 class OrderServices(models.Model):
     ref_code= models.CharField(max_length=15)
     owner = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True)
+    #number_of_samples= models.IntegerField()
     is_ordered = models.BooleanField(default=False)
     items = models.ManyToManyField(ServiceItem)
     date_ordered = models.DateTimeField(auto_now=True)

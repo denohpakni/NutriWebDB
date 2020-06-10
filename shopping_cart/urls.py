@@ -3,7 +3,7 @@ from django.conf.urls import url
 from .views import (
     add_to_cart,
     order_details,
-    delete_from_cart
+    delete_from_cart,
 )
 
 app_name = 'shopping_cart'
