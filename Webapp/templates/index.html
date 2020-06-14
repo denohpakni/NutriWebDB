@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block body %}
+
+
+  <!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro" class="clearfix">
+    <div class="container d-flex h-100">
+      <div class="row justify-content-center align-self-center">
+        <div class="col-md-6 intro-info order-md-first order-last">
+          <h2>Rapid Nutrition Testing<br>for <span>You!</span></h2>
+          <div>
+            <a href="/#footer" class="btn-get-started scrollto">Get Started</a>
+          </div>
+        </div>
+  
+        <div class="col-md-6 intro-img order-md-last order-first">
+          <img src="{% static "img/agriculture-barley.jpg" %}" alt="" class="img-fluid">
+        </div>
+      </div>
+
+    </div>
+  </section><!-- #intro -->
+
+  <main id="main">
+
+    <!-- User Area -->
+    <section>
+      <div class="site-section">
+        <div class="container">
+            {% if user.is_authenticated %}
+            <h2>Hello {{ user.username }}</h2>
+            {% else %}
+              <button type="button" class="btn btn-light btn-lg btn-block btn-primary"><a href="#">Register or Login to view your Profile & Place an Order</a></button>
+            {% endif %}
+        </div>
+      </div>
+    </section>
+    <!-- User Area -->
+
+ <!--==========================
+      About Us Section
+    ============================-->
+    <section id="about">
+      <header class="section-header">
+        <h3>The Mycotoxin and Nutrition Analysis platform</h3>
+        <p>High-end analytical testing and analysis</p>
+      </header>
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-5 col-md-6">
+            <div class="about-img">
+              <img src="{% static "img/brown-cattle.jpg" %}" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-7 col-md-6">
+            <div class="about-content">
+              <h2>Made In Africa, For You.</h2>
+              <p>The Mycotoxin and Nutrition Analysis platform at the BecA-ILRI Hub offers analytical testing services and support in food safety, 
+                food nutrition and related agricultural applications. 
+                The platform is equipped with high-end analytical testing equipment used in analysis of both inorganic and organic compounds of interest in bioscience applications.</p>
+                <p>The platform is open to researchers, regional research organizations or international research centers operating in Africa.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- #about -->
+
+    <!--==========================
+      Service Section
+    ============================-->
+    <section id="services" class="section-bg">
+      <div class="container">
+            <header class="section-header">
+              <h3>Request For a Service</h3>
+              <p>Click on a category below to expand and view more</p>
+            </header>
+          <div class="row">
+            <ul id="services-list" class="wow fadeInUp services-row">
+                  <li>
+                    <a data-toggle="collapse" class="collapsed ion-ios-analytics-outline" href="#services1">Food safety <i class="ion-android-remove"></i></a>
+                    <div id="services1" class="collapse" data-parent="#services-list">
+                      <ul>
+                        <li> Analysis of aflatoxins (B1, B2, G1, G2) in food and feedstuff, aflatoxin M1 in ilk through ultra-perfomance liuid chromatography fluorescence detection</li>
+                        <li>Analysis of multi mycotoxin using UPLC-MS/MS.</li>
+                        <li> Cross validation of rapid aflatoxin detection kits with UPLC-FLD across different matrices</li>
+                        <li>Multi-residue pesticide analysis</li>
+                      </ul>
+                    </div>
+                  </li>
+    
+                <li>
+                  <a data-toggle="collapse" href="#services2" class="collapsed ion-ios-bookmarks-outline">Food nutrition <i class="ion-android-remove"></i></a>
+                  <div id="services2" class="collapse" data-parent="#services-list">
+                    <ul>
+                      <li> Analysis of inorganic elemens (Fe, Zn, Mg, Co, Ca,K, Na, P Mn) in various plant matrices</li>
+                      <li>Profiling of isoflavones in soy based food and supplements through UPLC-PDA</li>
+                      <li> Assesment of essential amino acids in food and feedstuff</li>
+                      <li>Profiling of fatty acid methyl esters by gas chromatography mass spectometry (GC-MS)</li>
+                      <li>Profiling of volatile organic compounds using head space solid phase micro extraction gas chromatography mass spectometry (HS-SPME-GCMS)</li>
+                      <li>Determination of nutritional and antinutritional phytochemicals in food and feed
+                        e.g phenolics, flavanoids, anti-oxidant activity, tannins, oxalates,phytates etc..</li>not fat (SnF), freezing point depression
+                        (FPD), total acidity, density, free fatty acids (FFA), citric acids, casein, urea, sucrose, glucose, fructose, galactose</li>
+      
+                      <li>Determination of proximates composition in raw and processed food and feed products</li>
+                      <li>Determination of various proximate in raw and processed milk (fat, protein, lactose, total solids, solids )</li>
+                    </ul>
+                  </div>
+                </li>
+
+                <li>
+                  <a data-toggle="collapse" href="#services3" class="collapsed ion-ios-paper-outline">Other Analysis <i class="ion-android-remove"></i></a>
+                  <div id="services3" class="collapse" data-parent="#services-list">
+                    <ul>
+                      <li> Untargeted GC-MS and UPLC-MS metabolite prfiling</li>
+                      <li>Targeted UPLC-MS/MS profiling of strigolactones</li>
+                    </ul>
+                  </div>
+                </li>
+
+              <li>
+                <a data-toggle="collapse" href="#services4" class="collapsed ion-ios-speedometer-outline">Training <i class="ion-android-remove"></i></a>
+                <div id="services4" class="collapse" data-parent="#services-list">
+                  <ul>
+                    <li>Training on demand</li>
+                  </ul>
+                </div>
+              </li>
+
+          </ul>
+          </div>
+        </div>
+    </section>
+    <!-- #services -->
+
+    <!--==========================
+      Why Us Section
+    ============================-->
+    <section id="why-us" class="wow fadeIn">
+      <div class="container-fluid">
+
+        <header class="section-header">
+          <h3>Why choose us?</h3>
+          <p>We are part of The International Livestock Research Institute (ILRI) works with partners worldwide to enhance the roles that livestock play in food security and poverty alleviation, principally in Africa and Asia.</p>
+        </header>
+
+        <div class="row">
+
+          <div class="col-lg-6">
+            <div class="why-us-img">
+              <img src="{% static "img/abundance-agriculture.jpg" %}" alt="" class="img-fluid">
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="why-us-content">
+              <p>The platform currently serves and has the potential to serve Scientists across different research themes including:<br>
+                <br>Food toxicology scientists and epidemiologists.
+                <ul>
+                  <li>Evaluation of contamination of food and animal
+                    feed by mycotoxin from various mycotoxigenic
+                    fungus</li>
+                  <li>Prevalence of adulteration of milk</li>
+                </ul>
+
+                  Crop improvement scientists i.e. plant breeders
+                <ul>
+                  <li>Screening of various bioactive components of
+                    interest to plant breeders</li>
+                  <li>Breeding for elimination or reduction of antinutritive
+                    properties</li>
+                  <li>Evaluating the effect of genetic breeding on various bioactive components</li>
+                </ul>
+
+                  Food science and nutrition scientists:
+                <ul>
+                  <li>Profiling of nutritional components in various foodstuffs</li>
+                  <li>Assessing the effects of various food processing techniques on the nutritional and antinutritional factors</li>
+                </ul>
+              </p>
+
+              <div class="features wow bounceInUp clearfix">
+                <i class="fa fa-diamond" style="color: #f058dc;"></i>
+                <h4>Reduce Poverty</h4>
+                <p>Enable better livelihood options via agricultural practices</p>
+              </div>
+
+              <div class="features wow bounceInUp clearfix">
+                <i class="fa fa-object-group" style="color: #ffb774;"></i>
+                <h4>Better lives through livestock</h4>
+                <p> ILRI’s mission is
+                  to improve food and nutritional security
+                  and to reduce poverty in developing
+                  countries through research for
+                  efficient, safe and sustainable
+                  use of livestock</p>
+              </div>
+
+              <div class="features wow bounceInUp clearfix">
+                <i class="fa fa-language" style="color: #589af1;"></i>
+                <h4>Research</h4>
+                <p>Towards food security and improved nutrition </p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+<!-- The moving number thingy -->
+      <div class="container">
+        <div class="row counters">
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">203</span>
+            <p>Clients</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">500</span>
+            <p>Projects</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">10,364</span>
+            <p>Farmers Impacted</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">700</span>
+            <p>Hard Workers</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!--==========================
+      Call To Action Section
+    ============================-->
+    <section id="call-to-action" class="wow fadeInUp">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-9 text-center text-lg-left">
+            <h3 class="cta-title">Getting the Science right</h3>
+            <p class="cta-text">We have additional facilities that can be accessed through the platform like a A dedicated (BSL2) milling room, Plant growth facilities and more.</p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="/order/">Make an Order</a>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- #call-to-action -->
+
+    <!--==========================
+      Team Section
+    ============================-->
+    <section id="team" class="section-bg">
+      <div class="container">
+        <div class="section-header">
+          <h3>Team</h3>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="member">
+              <img src="{% static "img/teamember.png" %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Jacob Mignouna</h4>
+                  <span>BecA Director</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="member">
+              <img src="{% static "img/girl.png" %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Josephine Birungi</h4>
+                  <span>Head of Technology </span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+            <div class="member">
+              <img src="{% static "img/teamember.png" %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Fredrick Nganga</h4>
+                  <span>Analyst</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="member">
+              <img src="{% static "img/girl.png" %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Joyce Musyoka</h4>
+                  <span>Analyst</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- #team -->
+
+    <!--==========================
+      Clients Section
+    ============================-->
+    <section id="clients" class="wow fadeInUp">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>Our Clients</h3>
+        </header>
+
+        <div class="owl-carousel clients-carousel">
+          <img src="{% static "img/clients/africarice.jpg" %}" alt="">
+          <img src="{% static "img/clients/beca.png" %}" alt="">
+          <img src="{% static "img/clients/cgiar.png" %}" alt="">
+          <img src="{% static "img/clients/cimmyt.png" %}" alt="">
+          <img src="{% static "img/clients/CIP.jpg" %}" alt="">
+          <img src="{% static "img/clients/ICARDA.png" %}" alt="">
+          <img src="{% static "img/clients/icraf.png" %}" alt="">
+          <img src="{% static "img/clients/icrisat.jpg" %}" alt="">
+          <img src="{% static "img/clients/IITA.jpg" %}" alt="">
+          <img src="{% static "img/clients/ILRI.jpg" %}" alt="">
+        </div>
+
+      </div>
+    </section><!-- #clients -->
+
+    <!--==========================
+      Frequently Asked Questions Section
+    ============================-->
+    <section id="faq">
+      <div class="container">
+        <header class="section-header">
+          <h3>Frequently Asked Questions</h3>
+          <p>Wondering how long it takes to perform a DM content, or Crude fat analysis? And any other general questions...</p>
+        </header>
+
+        <ul id="faq-list" class="wow fadeInUp">
+          <li>
+            <a data-toggle="collapse" class="collapsed" href="#faq1">What additional facilities can be accessed through the platform?<i class="ion-android-remove"></i></a>
+            <div id="faq1" class="collapse" data-parent="#faq-list">
+              <p>
+                • Access to an assortment of glassware, cleaning
+                and sterilization services.<br>
+                • A dedicated biosafety level 2 (BSL2) milling
+                room with Romer II mills, among other sample
+                processing and preparation techniques.<br>
+                • Plant growth facilities (greenhouse and screening
+                house).
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <a data-toggle="collapse" href="#faq2" class="collapsed">What Equipment is found on the platform? <i class="ion-android-remove"></i></a>
+            <div id="faq2" class="collapse" data-parent="#faq-list">
+              <p>• MilkoFT Scanner.<br>
+                • Near Infrared scanner.<br>
+                • Ultra-performance liquid chromatograph linked
+                to Photo Diode Array detector (UPLC-PDA),
+                Fluorescent detector(UPLC-FLD), Evaporative Light
+                Scattering Detector (UPLC-ELSD) and a fractional
+                collector.<br>
+                • Ultra-performance Liquid chromatograph triple
+                quadrupole mass spectrometer (UPLC-MS/MS).
+                • Gas chromatograph – mass spectrometer (ion
+                trap) (GC-MS).
+                • Inductively coupled Plasma- optical emission
+                spectrometer (ICP-OES).
+                </p>
+            </div>
+          </li>
+
+          <li>
+            <a data-toggle="collapse" href="#faq3" class="collapsed">Who manages the Platform? <i class="ion-android-remove"></i></a>
+            <div id="faq3" class="collapse" data-parent="#faq-list">
+              <p>The Mycotoxin and Nutrition platform is managed by a team led by the Head of Technology and comprising of a diagnostics platform manager/assistant to the Head of Technology,
+                 a research officer and a research associate.<br>
+                 The platform is supported by;<br>
+                a)	The ILRI engineering unit that conducts regular maintenance and repair of equipment<br>
+                b)	The occupational health and safety unit who provides support in biosafety related matters<br>
+                c)	The ILRI procurement team that helps in the purchase of consumables and other requirements of the platform<br>
+                d)	Laboratory assistants who offer support in cleaning of floor, work benches and access to central core unit for cleaning and sterilization of glassware.
+                </p>
+            </div>
+          </li>
+
+          <li>
+            <a data-toggle="collapse" href="#faq4" class="collapsed">How can an intrested person get access to the Platform? <i class="ion-android-remove"></i></a>
+            <div id="faq4" class="collapse" data-parent="#faq-list">
+              <p>
+                Potential users are encouraged to contact the
+                laboratory management team well in advance to
+                discuss their work plans and related requirements,
+                and to ensure successful implementation of their
+                projects </p>
+            </div>
+          </li>
+
+          <li>
+            <a data-toggle="collapse" href="#faq5" class="collapsed">Who are your clients? <i class="ion-android-remove"></i></a>
+            <div id="faq5" class="collapse" data-parent="#faq-list">
+              <p>
+                The platform is open to researchers, regional research
+                organizations or international research centers
+                operating in Africa with particular focus on the
+                following organizations:<br>
+                • African national agricultural research system
+                breeding programs.<br>
+                • CG centers (ILRI, IFPRI, AfricaRice, CIAT, CIMMYT,
+                CIP, ICRISAT, ICRAF, IITA, IRRI etc.)<br>
+                • BecA-ILRI Hub users and partners from Africa and
+                beyond.<br></p>
+              </p>
+                
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </section><!-- #faq -->
+
+  </main>
+  
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer" class="section-bg">
+    <div class="footer-top">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-6">
+
+            <div class="row">
+
+                <div class="col-sm-6">
+
+                  <div class="footer-info">
+                    <h3>The Nutrition Platform</h3>
+                    <p>Analytical testing Services and support in food safety, food nutrition and related
+                      agricultural applications.</p>
+                  </div>
+
+                  <div class="footer-newsletter">
+                    <h4>About ILRI</h4>
+                    <p>Learn more about the BecA-ILRI Hub.</p>
+                    <a href="https://www.ilri.org/" target="_blank"><img src="{% static "img/clients/ILRI.jpg" %}"></a>
+                  </div>
+
+                </div>
+
+                <div class="col-sm-6">
+                  <div class="footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                      <li><a href="#">ILRI</a></li>
+                      <li><a href="#">BecA Hub</a></li>
+                      <li><a href="#">Services</a></li>
+                      <li><a href="#">Terms of service</a></li>
+                      <li><a href="#">Privacy policy</a></li>
+                    </ul>
+                  </div>
+
+                  <div class="footer-links">
+                    <h4>Contact Us</h4>
+                    <p>
+                      P.O Box 30709<br>
+                      Nairobi 00100<br>
+                      Kenya <br>
+                      <strong>Phone:</strong> +254 20 422 3384<br>
+                      <strong>Email:</strong> mycnutplatform@cgiar.org<br>
+                    </p>
+                  </div>
+
+                  <div class="social-links">
+                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                  </div>
+
+                </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-6">
+
+            <div class="form">
+              
+              <h4>Send us a message</h4>
+              <p>Want to know more about what we do, or our services.</p>
+              <form action="" method="POST" role="form" class="contactForm">
+
+                {% csrf_token %}
+                {% bootstrap_form form %}
+
+                <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
+              </form>
+            </div>
+
+          </div>
+
+          
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>BecA-ILRI</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!--
+          All the links in the footer should remain intact.
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Rapid
+        -->
+        Designed using <a href="https://www.djangoproject.com/" target="_blank">Django</a>
+      </div>
+    </div>
+  </footer><!-- #footer -->
+
+{% endblock %}

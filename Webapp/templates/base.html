@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+{% load static %}
+{% load bootstrap4 %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Nutrition Platform</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="{% static "img/favicon.ico" %}" rel="icon">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{% static "lib/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{% static "lib/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet">
+  <link href="{% static "lib/animate/animate.min.css" %}" rel="stylesheet">
+  <link href="{% static "lib/ionicons/css/ionicons.min.css" %}" rel="stylesheet">
+  <link href="{% static "lib/owlcarousel/assets/owl.carousel.min.css" %}" rel="stylesheet">
+  <link href="{% static "lib/lightbox/css/lightbox.min.css" %}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{% static "css/style.css" %}" rel="stylesheet">
+<!-- custom stylesheet-->
+  <link href= "{% static "css/base.css" %}"  rel="stylesheet">
+
+
+</head>
+
+<body>
+  <!--==========================
+  Header
+  ============================-->
+  <header id="header">
+
+    <!-- ======== Staff Navigation ======== -->
+{% if user.is_staff %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+          <img src="{% static "img/NutritionPlatformLogo.png" %}" alt="Logo"></a>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Dashboard<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/admin">Admin DB<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <a class="nav-link active" href="#">
+  <span class="hello-msg">Hello, {{request.user}}</span>
+  <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+  </a>
+</nav>
+{% endif %}
+<!-- ========= End of Staff nav ============ -->
+
+    <div id="topbar">
+      <div class="container">
+        <div class="social-links">
+          <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+          <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+          <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+          <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+<!-- NavBar -->
+    <div class="container">
+
+      <div class="logo float-left">
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <h1 class="text-light"><a href="/" class="scrollto"><span>Nutrition</span></a></h1>
+        <!-- <a href="#header" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a> -->
+      </div>
+
+      <nav class="main-nav float-right d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="/">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">About us</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/#about">About us</a>
+              <a class="dropdown-item" href="/#services">Services</a>
+              <a class="dropdown-item" href="/#why-us">Why Us</a>
+              <a class="dropdown-item" href="/#clients">Our Clients</a>
+              <a class="dropdown-item" href="/#team">The Team</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/#faq">FAQs</a>
+            </div>
+          </li>          
+          <li class="current"><a href="#">Make an Order</a></li>
+          <li><a href="/#footer">Contact Us</a></li>          
+          {# Some logic on what to display for last item#}
+          {% if user.is_authenticated %}
+          <li class="nav-item dropdown profile">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="fa fa-user"></span><span>{{ request.user.username }}</span>
+            </a>
+            <div class="dropdown-menu" aria-labell  edby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">My Order</a>           
+          </div>
+          </li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+          {% else %}
+          <li><a href="{% url 'Webapp:register' %}">Register</a></li>
+          <li><a href="{% url 'Webapp:user_login' %}">Login</a></li>
+          {% endif %}          
+        </ul>
+      </nav><!-- .main-nav -->
+      
+    </div>
+
+  </header><!-- #header -->
+
+  {% block body %}
+  
+  {% endblock %}
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <!-- Uncomment below i you want to use a preloader -->
+  <!-- <div id="preloader"></div> -->
+
+  <!-- JavaScript Libraries -->
+  <script src="{% static "lib/jquery/jquery.min.js" %}"></script>
+  <script src="{% static "lib/jquery/jquery-migrate.min.js" %}"></script>
+  <script src="{% static "lib/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+  <script src="{% static "lib/easing/easing.min.js" %}"></script>
+  <script src="{% static "lib/mobile-nav/mobile-nav.js" %}"></script>
+  <script src="{% static "lib/wow/wow.min.js" %}"></script>
+  <script src="{% static "lib/waypoints/waypoints.min.js" %}"></script>
+  <script src="{% static "lib/counterup/counterup.min.js" %}"></script>
+  <script src="{% static "lib/owlcarousel/owl.carousel.min.js" %}"></script>
+  <script src="{% static "lib/isotope/isotope.pkgd.min.js" %}"></script>
+  <script src="{% static "lib/lightbox/js/lightbox.min.js" %}"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static "contactform/contactform.js" %}"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{% static "js/main.js" %}"></script>
+
+</body>
+</html>
