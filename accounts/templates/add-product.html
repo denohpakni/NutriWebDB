@@ -1,0 +1,45 @@
+{% extends 'dash.html' %}
+{% load static %}
+
+{% block body %}
+<div class="m-md-5">
+
+    <form action="/accounts/save-product" method="POST">
+        {% csrf_token %}
+
+        <label>Product Name : </label>
+        <select name="product_name" required >
+            <option value="earphone">Earphone</option>
+            <option value="laptop">Laptop</option>
+            <option value="headphone">Headphone</option>
+        </select>
+
+        <br>
+
+        Product Description : <input type="text" name="product_description"><br>
+
+        <label>Product Price :</label>
+        <select name="product_price" >
+            <option value="2">2000</option>
+            <option value="50">50000</option>
+            <option value="6">6000</option>
+        </select>
+
+        <br>
+
+        <label>Product Quantity :</label>
+        <select name="product_quantity" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+
+        <br>
+
+        <input class="btn btn-primary" type="submit" value="Save Products">
+    </form>
+    </div>
+ 
+{% endblock %}

@@ -40,26 +40,16 @@
 
     <!-- ======== Staff Navigation ======== -->
 {% if user.is_staff %}
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-          <img src="{% static "img/NutritionPlatformLogo.png" %}" alt="Logo"></a>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Dashboard<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/admin">Admin DB<span class="sr-only">(current)</span></a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <a class="nav-link active" href="#">
-  <span class="hello-msg">Hello, {{request.user}}</span>
-  <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
-  </a>
-</nav>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">Hello, {{request.user}}</h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" href="/admin">Backend</a>
+    <a class="p-2 text-dark"  href="/accounts/admin-dashboard">Dashboard</a>
+    <a class="p-2 text-dark" href="#">Support</a>
+    <a class="p-2 text-dark" href="#">Pricing</a>
+  </nav>
+  <a class="btn btn-outline-danger" href="{% url 'logout' %}">Logout</a>
+</div>
 {% endif %}
 <!-- ========= End of Staff nav ============ -->
 
@@ -97,7 +87,7 @@
               <a class="dropdown-item" href="/#faq">FAQs</a>
             </div>
           </li>          
-          <li class="current"><a href="#">Make an Order</a></li>
+          <li class="current"><a href="/accounts/show-product">Make an Order</a></li>
           <li><a href="/#footer">Contact Us</a></li>          
           {# Some logic on what to display for last item#}
           {% if user.is_authenticated %}
@@ -106,13 +96,12 @@
               <span class="fa fa-user"></span><span>{{ request.user.username }}</span>
             </a>
             <div class="dropdown-menu" aria-labell  edby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">My Order</a>           
+              <a class="dropdown-item" href="/accounts/user-dashboard">My Order</a>           
           </div>
           </li>
           <li><a href="{% url 'logout' %}">Logout</a></li>
           {% else %}
-          <li><a href="{% url 'Webapp:register' %}">Register</a></li>
-          <li><a href="{% url 'Webapp:user_login' %}">Login</a></li>
+          <li><a href="/accounts/login">Login</a></li>
           {% endif %}          
         </ul>
       </nav><!-- .main-nav -->

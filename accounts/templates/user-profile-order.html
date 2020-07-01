@@ -1,0 +1,31 @@
+{% extends 'dash.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="container m-md-6">
+
+        <h3> User Details </h3>
+        <table class="table">
+            <thead>
+            <tr>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Username</td>
+                <td>Email</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ userDetail.first_name }}</td>
+                <td>{{ userDetail.last_name }}</td>
+                <td>{{ userDetail.username }}</td>
+                <td>{{ userDetail.email }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a type="button" class="btn btn-primary" href="{% url 'admin-dashboard' %}">Back</a>
+
+</div>
+{% endblock %}

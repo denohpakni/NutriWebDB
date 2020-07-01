@@ -1,0 +1,37 @@
+{% extends 'dash.html' %}
+
+        {% block title %}User Dashboard {% endblock %}
+
+        {% block body %}
+    <div class="m-md-5">
+        <div class="card container" style="width: 18rem;">
+            <div class="card-header">
+                <form action="show-product">
+                    <input type="submit" value="Show Available Products">
+                </form>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <form action="order-history">
+                    <input type="submit" value="Order History">
+                </form>
+              </li>
+              <li class="list-group-item">Dapibus ac facilisis in</li>
+              <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+          </div>
+
+        
+
+        <br>
+        <br>
+
+        
+
+        <br>
+        <div class="">
+            <button type="button" class="btn btn-primary" href="{% url 'login' %}">Back</button>
+        </div>
+
+        </div>
+        {% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'dash.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="m-md-5">
+
+        <form action="add" method="POST">
+            {% csrf_token %}
+
+            <input type="submit" value="Add Products">
+        </form>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Product Description</th>
+                <th>Product Price</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for dest in dests %}
+            <tr>
+                <td>{{ dest.product_name }}<br></td>
+                <td>{{ dest.product_description }}</td>
+                <td>{{ dest.product_price }}</td>
+                <td>
+                    <form action="delete/{{ dest.id }}" method="POST">
+
+                        {% csrf_token %}
+                        <input type="hidden" value="{{ dest.id }}">
+                        <input type="submit" value="Delete Product">
+                    </form>
+                </td>
+                <td>
+                    <a href="{% url 'update' dest.id %}">Update Product</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <br>
+
+        <br>
+        <a class="btn btn-primary" href="{% url 'admin-dashboard' %}">Back</a>
+
+        </div>
+        {% endblock %}

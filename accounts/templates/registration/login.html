@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block title %}Login{% endblock %}
+{% block body %}
+<br><br><br><br><br><br>
+            <section class="section-bg">
+
+                    <form method="POST" class="col-5 m-md-5">
+                        {% csrf_token %}
+
+                        <div class="form-label-group">
+                            <input type="text" name="username" id="Username" class="form-control" placeholder="Username" required autofocus>
+                            <label for="username">Username</label>
+                        </div>
+
+                        <div class="form-label-group">
+                            <input type="password" name="password" class="form-control" placeholder="Password" required>
+                            <label for="password">Password</label>
+                        </div>
+
+                          <button class="btn btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+<br><br>
+                        <div class="container-login100-form-btn m-t-32">
+                            <p>Don't Have an account? <a style="color: blue" href="/accounts/register">Sign Up</a></p>
+                        </div>
+
+                        <div class="container-login100-form-btn m-t-32">
+                            <p>Forgot Password? <a style="color: blue" href="/forgot">ResetPassword</a></p>
+                        </div>
+                        <div class="container-login100-form-btn m-t-32">
+                            <p>Back to <a style="color: blue" href="/">Home Page</a></p>
+                        </div>
+                    </form>
+            </section>
+
+                    {% endblock %}

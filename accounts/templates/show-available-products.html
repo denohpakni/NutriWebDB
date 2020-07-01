@@ -1,0 +1,44 @@
+{% extends 'dash.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block body %}
+
+
+    <div class="container jumbotron text-center">
+      <h1>Our Products</h1>
+      <p class="lead text-muted">Here's a list of all the availale products.</p>
+    </div>
+
+
+<div class="container m-md-6">
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Product Category</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Description</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for dest in dests %}
+            <tr>
+                <td>{{ dest.product_category }}<br></td>
+                <td>{{ dest.product_name }}<br></td>
+                <td>{{ dest.product_description }}</td>
+                <td>
+                    <a href="{% url 'place-order' dest.id %}">Place Order</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <br>
+
+        <a type="button" class="btn btn-primary" href="{% url 'user-dashboard' %}">Back</a>
+
+           </div>
+
+{% endblock %}

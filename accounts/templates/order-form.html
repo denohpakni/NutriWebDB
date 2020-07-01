@@ -1,0 +1,18 @@
+{% extends 'dash.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block body %}
+
+<div class="container m-md-6">
+<h2>Order form???</h2>
+    <form action="register" method="POST">
+        {% csrf_token %}
+        
+        <input type="text" name="username" placeholder="User Name"><br>
+        <input type="text" name="email" placeholder="Email"><br>
+        <input type="text" name="password1" placeholder="password"><br>
+        <input type="text" name="password2" placeholder="Re Enter password"><br>
+        <input type="submit"></input>
+    </form>
+</div>
+    {% endblock %}

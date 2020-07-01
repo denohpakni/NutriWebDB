@@ -1,0 +1,36 @@
+{% extends 'dash.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block body %}
+
+<div class="container m-md-6">
+
+        <h3> Order History </h3>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Price</th>
+                <th scope="col">Product Quantity</th>
+                <th scope="col">Product Status</th>
+                <th scope="col">Owner</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for order in orderDetail %}
+            <tr>
+                <td>{{ order.product_name }}</td>
+                <td>{{ order.product_price }}</td>
+                <td>{{ order.product_quantity }}</td>
+                <td>{{ order.product_status }}</td>
+                <td>{{ order.order_by }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <a type="button" class="btn btn-primary" href="{% url 'user-dashboard' %}">Back</a>
+
+</div>
+    {% endblock %}

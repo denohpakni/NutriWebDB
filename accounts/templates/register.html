@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block title %}Login{% endblock %}
+{% block body %}
+<br><br><br><br><br><br>
+    <section class="section-bg">
+                    <span class="login100-form-title p-b-41">
+                        Register Account
+                    </span>
+                    <form action="register" method="post" class="col-5 m-md-5">
+                        {% csrf_token %}
+
+                        <div class="form-label-group">
+                            <input class="form-control" type="text" name="first_name" placeholder="First Name">
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Enter LastName">
+                            <input class="form-control" type="text" name="last_name" placeholder="Last Name">
+                            <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                        </div>
+
+                        <div class="form-label-group">
+                            <input type="text" name="username" id="Username" class="form-control" placeholder="Username" required autofocus>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Enter Email">
+                            <input class="form-control" type="email" name="email" placeholder="Email">
+                            <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Enter Password">
+                            <input class="form-control" type="password" name="password1" placeholder="Password">
+                            <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Re-Enter Password">
+                            <input class="form-control" type="password" name="password2" placeholder="Re-Enter Password">
+                            <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                        </div>
+
+                        <div class="container-login100-form-btn m-t-32">
+                            <button class="btn btn-warning btn-block text-uppercase">
+                                Register Account
+                            </button>
+                        </div>
+                        <br>
+                        <div class="container-login100-form-btn m-t-32">
+                            <p>Already Have an account? <a style="color: blue" href="/accounts/login">Login</a></p>
+                        </div>
+                        <div class="container-login100-form-btn m-t-32">
+                            <p>Back to <a style="color: blue" href="/">Home Page</a></p>
+                        </div>
+
+                    </form>
+    </section>
+    {% endblock %}

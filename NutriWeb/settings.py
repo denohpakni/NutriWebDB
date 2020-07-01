@@ -37,16 +37,14 @@ INSTALLED_APPS = [
     # Optional: Django admin theme (must be before django.contrib.admin)
     'adminlte3_theme',
     'bootstrap4',
-    'widget_tweaks',
-    'django_countries',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_filters',
     'Webapp',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -145,5 +143,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
  
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/accounts/show-product'
+LOGOUT_REDIRECT_URL = '/accounts/login'
