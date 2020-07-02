@@ -166,6 +166,5 @@ def showOrderHistory(request):
 
 def updateStatus(request):
     username = request.user
-    PlaceOrderModel.objects.filter(order_by=username).filter(product_status='Active').update(product_status='Completed')
-    # PlaceOrderModel.objects.filter(order_by=username).filter(product_status='Placed').update(product_status='Active')
+    PlaceOrderModel.objects.filter(order_by=username).filter(product_status='Ordered').update(product_status='Completed')
     return HttpResponse("Status Updated")

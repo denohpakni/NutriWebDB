@@ -144,4 +144,4 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
  
 LOGIN_REDIRECT_URL = '/accounts/show-product'
-LOGOUT_REDIRECT_URL = '/accounts/login'
+LOGOUT_REDIRECT_URL = '/'
