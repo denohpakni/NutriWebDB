@@ -1,0 +1,9 @@
+.services-row{
+    margin-left: 250px;
+    
+  }
+
+  a.order-service{
+      display: inline-block !important;
+      font-size: 15px !important; 
+  }

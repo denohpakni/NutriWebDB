@@ -1,1 +1,1 @@
-web: gunicorn NutriWeb.wsgi --log-file -
+web: gunicorn nutriwebv2.wsgi --log-file -

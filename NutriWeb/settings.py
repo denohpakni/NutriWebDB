@@ -27,7 +27,7 @@ SECRET_KEY = '7mmbyw@6$6dt-boep=wvoov6pyldyrf*bercpiq*cd2k1$(^0b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['nutritionplatform.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['nutriwebv2.herokuapp.com','127.0.0.1']
 
 
 # Application definition
