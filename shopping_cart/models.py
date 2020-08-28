@@ -4,7 +4,9 @@ from Webapp.models import Services
 from Webapp.models import Profile
 
 class ServiceItem(models.Model):
-    service = models.OneToOneField(Services, on_delete=models.SET_NULL,null=True)
+    service = models.ForeignKey(Services, on_delete=models.SET_NULL,null=True)
+    owner = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True)
+    number_of_samples= models.IntegerField(default=1)
     is_ordered = models.BooleanField(default=False)
     date_added = models.DateTimeField(auto_now=True)
     date_ordered= models.DateTimeField(null=True)
@@ -15,7 +17,6 @@ class ServiceItem(models.Model):
 class OrderServices(models.Model):
     ref_code= models.CharField(max_length=15)
     owner = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True)
-    #number_of_samples= models.IntegerField()
     is_ordered = models.BooleanField(default=False)
     items = models.ManyToManyField(ServiceItem)
     date_ordered = models.DateTimeField(auto_now=True)
@@ -25,3 +26,6 @@ class OrderServices(models.Model):
 
     def __str__(self):
         return '{0} - {1}'.format(self.owner, self.ref_code)
+
+
+

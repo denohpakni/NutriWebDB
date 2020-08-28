@@ -14,16 +14,6 @@ from shopping_cart.models import OrderServices
 
 # Create your views here.
 def mainpage(request):
-    services = Services.objects.all()
-    
-    current_order_services = []
-    if request.user.is_authenticated:
-        filtered_services = OrderServices.objects.filter(owner=request.user.profile, is_ordered=False)
-        
-        if filtered_services.exists():
-            user_order = filtered_services[0]
-            user_order_items = user_order.items.all()
-            current_order_services = [service.service for service in user_order_items]
 
     if request.method == 'POST':
         form = MessageForm(request.POST)
@@ -41,7 +31,7 @@ def mainpage(request):
     else:
         form = MessageForm()
 
-    context = {'form':form,'services':services,'current_order_services': current_order_services}
+    context = {'form':form}
     return render(request,'index.html',context)
 
 def thanks(request):
@@ -105,26 +95,22 @@ def user_login(request):
 
 @login_required(login_url='/user_login/')
 def order(request):
-    form = OrderForm
+
+    services = Services.objects.all()
+    
+    current_order_services = []
     if request.user.is_authenticated:
-        form = OrderForm(request.POST or None)
-        if request.method == 'POST':
-            if form.is_valid():
-                order = form.save(commit=False)
-                order.Client = request.user
-                order.save()
-                # send email
-                from_email = settings.EMAIL_HOST_USER # the Domain email            
-                Analyis_Required = form.cleaned_data['Analyis_Required']
-                Remarks = form.cleaned_data['Remarks']
-                recipient_list = ['denohpakni@yahoo.com']
+        filtered_services = OrderServices.objects.filter(owner=request.user.profile, is_ordered=False)
+        
+        if filtered_services.exists():
+            user_order = filtered_services[0]
+            user_order_items = user_order.items.all()
+            current_order_services = [service.service for service in user_order_items]
+    context = {'services':services,'current_order_services': current_order_services}
 
-                send_mail(Analyis_Required,Remarks,from_email,recipient_list,fail_silently=True)
-                return redirect('Webapp:thanks')
-    else:
-        form = OrderForm()
-    return render(request,'order.html',{'form':form})
+    return render(request,'order.html',context)
 
+    
 # Custom error pages
 def handler404(request, *args, **argv):
     return render(request, '404.html', status=404)

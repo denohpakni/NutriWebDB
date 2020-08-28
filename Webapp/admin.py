@@ -1,5 +1,6 @@
 from django.contrib import admin
 from Webapp.models import Message, Order, UserProfileInfo, User, Services
+from shopping_cart.models import OrderServices, ServiceItem
 
 
 # Change Admin Title and Header
@@ -27,4 +28,12 @@ class UserProfileInfoA(admin.ModelAdmin):
 admin.site.register(Order, OrderA)
 admin.site.register(Message)
 admin.site.register(UserProfileInfo,UserProfileInfoA)
-admin.site.register(Services)
+admin.site.register(OrderServices)
+admin.site.register(ServiceItem)
+#admin.site.register(Services)
+
+@admin.register(Services)
+class ServicesAdmin(admin.ModelAdmin):
+    list_display = ('description','category','code')
+    list_filter = ('category',)
+

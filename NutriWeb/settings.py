@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Webapp',
-    'shopping_cart'
+    'shopping_cart',
+    'django_csv_exports',
 ]
 
 MIDDLEWARE = [

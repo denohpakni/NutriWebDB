@@ -5,27 +5,188 @@
 {% load static %}
 
 {% block body %}
-<section class="section-bg">
-    <div class="container d-flex h-100">
-        <div class="row justify-content-center align-self-center">
-          <div>
-  <br><br><br><br><br><br>
-            <div>
-                <h4>Make an Order</h4>
-                <p>Asuming you've already discussed with the guys at the Nutrition Platform.</p>
-                <p>Please make an order of <strong>One Service per Order</strong></p>
-                <form action="" method="POST">
-                {% csrf_token %}
-                {% bootstrap_form form %}
-                <div class="text-center">
-                  {% buttons %}
-                  <button type="submit" class="btn btn-primary">Send Message</button>
-                  {% endbuttons %}</div>
-                </form>
-            </div>
+
+    <!--==========================
+      Service Section
+    ============================-->
+    <section id="services" class="section-bg">
+      <div class="container">
+            <header class="section-header">
+              <h3>Request For a Service</h3>
+              <p>Click on a category below to expand and view more</p>
+            </header>
+          <div class="row">
+            <ul id="services-list" class="wow fadeInUp services-row">
+                  <li>
+                    <a data-toggle="collapse" class="collapsed ion-ios-analytics-outline" href="#services1">Food safety <i class="ion-android-remove"></i></a>
+                    <div id="services1" class="collapse" data-parent="#services-list">
+                      <ul>
+                        {% for service in services %}
+                        {%if service.category == "food_safety" %}
+                        <li>{{ service.description }}  &nbsp; 
+                          {% if service in user.profile.services %}
+                          You own this 
+                          {% elif service in current_order_services%}
+                          <a href="{% url 'shopping_cart:order_summary' %}" class="order-service">Go to Cart</a>
+                          {%else%}
+                          <a href="{% url 'shopping_cart:add_to_cart' service.id %}" 
+                           class="order-service">Add Service</a>
+                          {%endif%}
+                          </li>
+                          {%endif%}
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  </li>
+    
+
+                <li>
+                  <a data-toggle="collapse" href="#services2" class="collapsed ion-ios-bookmarks-outline">Food nutrition <i class="ion-android-remove"></i></a>
+                  <div id="services2" class="collapse" data-parent="#services-list">
+                    <ul>
+                      {% for service in services %}
+                      {%if service.category == "food_nutrition" %}
+                      <li>{{ service.description }}  &nbsp; 
+                        {% if service in user.profile.services %}
+                        You own this 
+                        {% elif service in current_order_services%}
+                        <a href="{% url 'shopping_cart:order_summary' %}" class="order-service">Go to Cart</a>
+                        {%else%}
+                        <a href="{% url 'shopping_cart:add_to_cart' service.id %}" 
+                         class="order-service">Add Service</a>
+                        {%endif%}
+                        </li>
+                        {%endif%}
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </li>
+
+                <li>
+                  <a data-toggle="collapse" href="#services3" class="collapsed ion-ios-paper-outline">Others <i class="ion-android-remove"></i></a>
+                  <div id="services3" class="collapse" data-parent="#services-list">
+                    <ul>
+                      {% for service in services %}
+                      {%if service.category == "others" %}
+                      <li>{{ service.description }}  &nbsp; 
+                        {% if service in user.profile.services %}
+                        You own this 
+                        {% elif service in current_order_services%}
+                        <a href="{% url 'shopping_cart:order_summary' %}" class="order-service">Go to Cart</a>
+                        {%else%}
+                        <a href="{% url 'shopping_cart:add_to_cart' service.id %}" 
+                         class="order-service">Add Service</a>
+                        {%endif%}
+                        </li>
+                        {%endif%}
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </li>
+
+              <li>
+                <a data-toggle="collapse" href="#services4" class="collapsed ion-ios-speedometer-outline">Training <i class="ion-android-remove"></i></a>
+                <div id="services4" class="collapse" data-parent="#services-list">
+                  <ul>
+                    {% for service in services %}
+                    {%if service.category == "training" %}
+                    <li>{{ service.description }}  &nbsp; 
+                      {% if service in user.profile.services %}
+                      You own this 
+                      {% elif service in current_order_services%}
+                      <a href="{% url 'shopping_cart:order_summary' %}" class="order-service">Go to Cart</a>
+                      {%else%}
+                      <a href="{% url 'shopping_cart:add_to_cart' service.id %}" 
+                       class="order-service">Add Service</a>
+                      {%endif%}
+                      </li>
+                      {%endif%}
+                    {% endfor %}
+                  </ul>
+                </div>
+              </li>
+
+          </ul>
           </div>
+          </div>
+    </section>
+    <!-- #services -->
+
+     <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer" class="section-bg">
+    <div class="footer-top">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-6">
+
+            <div class="row">
+
+                <div class="col-sm-6">
+
+                  <div class="footer-info">
+                    <h3>The Nutrition Platform</h3>
+                    <p>Analytical testing Services and support in food safety, food nutrition and related
+                      agricultural applications.</p>
+                  </div>
+
+                 
+
+                </div>
+
+                <div class="col-sm-6">
+                 
+
+                  <div class="footer-links">
+                    <h4>Contact Us</h4>
+                    <p>
+                      P.O Box 30709<br>
+                      Nairobi 00100<br>
+                      Kenya <br>
+                      <strong>Phone:</strong> +254 20 422 3384<br>
+                      <strong>Email:</strong> mycnutplatform@cgiar.org<br>
+                    </p>
+                  </div>
+
+                  <div class="social-links">
+                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                  </div>
+
+                </div>
+
+            </div>
+
+          </div>
+
+        
+
+          
+
         </div>
+
+      </div>
     </div>
-</section>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>BecA-ILRI</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!--
+          All the links in the footer should remain intact.
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Rapid
+        -->
+        Designed using <a href="https://www.djangoproject.com/" target="_blank">Django</a>
+      </div>
+    </div>
+  </footer><!-- #footer -->
 
 {% endblock %}

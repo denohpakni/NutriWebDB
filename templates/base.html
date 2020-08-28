@@ -104,7 +104,8 @@
               <span class="fa fa-user"></span><span>{{ request.user.username }}</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="{% url 'shopping_cart:order_summary' %}">My Order</a>           
+              <a class="dropdown-item" href="{% url 'shopping_cart:order_summary' %}">My Order</a> 
+              <a class="dropdown-item" href="{% url 'shopping_cart:order_summary' %}">All Orders</a>              
           </div>
           </li>
           <li><a href="{% url 'logout' %}">Logout</a></li>

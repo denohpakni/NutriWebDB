@@ -11,12 +11,28 @@
       <tr class="text-center">
         <th>no.</th>
         <th>Service</th>
+        <th>Number of Samples</th>
+        <th>Actions</th>
       </tr>
       {% for item in order.get_cart_items %}
         <tr>
           <td>{{ forloop.counter }}</td>
           <td>
             {{ item.service.description }}
+            
+          </td>
+          <td>
+            <input type="number" class="quantity" name="quantity" min="1" value= {{item.number_of_samples}}>
+          </td>
+          <td>
+              <a class="myLink" href="#" onclick="return getInput_value({{item.id}}, this); return false;">
+                <span class="checkmark">
+                  <div class="checkmark_circle"></div>
+                  <div class="checkmark_stem"></div>
+                  <div class="checkmark_kick"></div>
+              </span>
+              </a>
+            
             <span class="pull-right">
               <a href="{% url 'shopping_cart:delete_item' item.id %}"  data-balloon="remove this item from cart" class="text-danger" onclick="return confirm_delete();">
                 <i class="fas fa-trash"></i>
@@ -31,28 +47,47 @@
         </tr>
       {% endfor %}
 
-      <tr>
-        {% if order.get_cart_items != None %}
-        <td colspan=1>
-          <strong class="pull-right">Number Of Samples:</strong>
-        </td>
-        
-        <td colspan= 1>
-          <input type="number" id="quantity" name="quantity" min="1">
-        </td>
-        {% endif %}
-      </tr>
      
       <tr>
         <td colspan=1 >
-          <a href="{% url 'Webapp:services' %}" class="btn btn-warning pull-left">
+          <a href="{% url 'Webapp:order' %}" class="btn btn-warning pull-left">
             {% if order %}Add more Services{% else %}Add Services First {% endif %}
           </a> 
         </td>
         
          <td colspan=2>
           {% if order.get_cart_items %}
-            <a href="#" class="pull-right btn btn-primary">Proceed to Checkout</a>
+          <a href="{% url 'shopping_cart:export' %}" class="pull-right btn btn-primary" onclick="displayFunction()"> Generate Template</a>
+          
+          {% endif %}
+        </td>
+      </tr> 
+      <tr id="result_tr" style="display: none;">
+        <td colspan=2>
+          {% if order.get_cart_items %}
+
+
+          {% if messages %}
+          {% for message in messages %}
+              <div>
+  <!--                | means OR operator-->
+                  <strong>{{message|safe}}</strong>
+              </div>
+          {% endfor %}
+      {% else %}
+      {{orders}}
+      <form action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <label for="file1"> Upload a file</label>
+          <input type="file" id="file1" name="file">
+          <small>Only accepts CSV files</small>
+          <button type="submit" class=  "pull-right btn btn-primary">Upload CSV</button>
+      </form>
+      {% endif %}
+      {% for profile in profiles %}
+      {{profile.name}}
+      {% endfor %}
+          
           {% endif %}
         </td> 
       
@@ -69,6 +104,19 @@
   function confirm_delete(){
     return confirm("Do you want to remove this item from cart?");
   }
+ function displayFunction(){
+  var result_style = document.getElementById('result_tr').style;
+  result_style.display = 'table-row';
+ }
+
+  function getInput_value(id,elemnt ){
+   
+    newelmnt= $(elemnt).closest('tr').find('input').val();
+    window.location.href="http://127.0.0.1:8000/cart/service/update/first/second/".replace("first",id).replace("second",newelmnt)
+    return false;
+
+  }
+
   </script>
 {% endblock scripts %}
 
